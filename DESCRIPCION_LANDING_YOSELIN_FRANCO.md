@@ -1,8 +1,8 @@
-# Landing Page — Yoselin Franco · Mentora en Reinvención Personal y Financiera
+# Landing Page — Yoselin Franco · Coach Personal y Mentora Financiera
 
 **Documento descriptivo completo**
 
-- **Archivo fuente:** `index-V2.html`
+- **Archivo fuente:** `index.html`
 - **Dominio:** yoselinfranco.com
 - **Idiomas:** Español (ES) · Inglés (EN) · Francés (FR) — selector de idiomas en la navegación
 - **Tagline principal:** "Nunca es tarde para reinventarte."
@@ -69,7 +69,7 @@ Barra superior fija con:
 ### 3.2 Hero (Inicio)
 - **Fondo:** fotografía de Yoselin con viñeta.
 - **Redes sociales:** iconos SVG de Instagram, YouTube y Email (correo) con enlaces.
-- **Kicker / etiqueta:** "Mentora en Reinvención Personal y Financiera" (con barra `/` decorativa).
+- **Kicker / etiqueta:** "Coach Personal y Mentora Financiera" (con barra `/` decorativa).
 - **Nombre en grande:** "Yoselin Franco" (título H1).
 - **Indicador de scroll:** "Scroll ↓".
 
@@ -96,7 +96,7 @@ Barra superior fija con:
 - **Número fantasma:** 02
 - **Etiqueta:** "Qué ofrezco"
 - **Título:** "Mentorías y **paquetes**"
-- **Subtítulo:** "100% online vía Google Meet, en español, disponibles para Canadá, EE.UU. y Latinoamérica."
+- **Subtítulo:** "100% online vía Google Meet, en español e inglés, disponible donde quiera que estés."
 - **Grilla de 4 tarjetas de servicio**, cada una con badge, título, precio en USD, descripción, lista de "incluye" y botón CTA:
 
 | Servicio | Precio | Incluye | CTA / Link |
@@ -106,7 +106,7 @@ Barra superior fija con:
 | **Paquete Reinvención** (3 sesiones) | $197 USD | · 3 sesiones de 60 min · Plan de acción progresivo · Seguimiento entre sesiones · Materiales incluidos | "Agenda tu sesión" → Calendly `paquete-3-sesiones-reinvencion` |
 | **Paquete Financiero** (3 sesiones) | $220 USD | · 3 sesiones de 60 min · Análisis completo de presupuesto · Plan financiero a 6 meses · Plantillas y guías | "Agenda tu sesión" → Calendly `paquete-reinvencion-3-sesiones-` |
 
-- **Nota al cierre (destacada):** "**Importante:** Todos los servicios son 100% online y en español, disponibles para Canadá, EE.UU. y Latinoamérica."
+- **Nota al cierre (destacada):** "**Importante:** Todos los servicios son 100% online, en español e inglés, disponibles donde quiera que estés."
 
 > **Compatibilidad con el brief:** el brief describe 4 productos de mentoría (Personal 1:1, Financiera 1:1, Paquete Reinvención, Paquete Financiero) con los mismos precios e inclusiones. La landing los replica exactamente.
 
@@ -119,7 +119,9 @@ Barra superior fija con:
   1. "Soy **Yoselin Franco**. Venezolana. Contadora Pública egresada de la UCAB. Más de 10 años en finanzas, incluyendo el Gobierno de Canadá. Vivo en Montreal en una relación multicultural con un canadiense de Quebec que me enseñó que el tiempo libre existe — y yo le enseñé a comer arepas."
   2. "He migrado dos veces — Panamá, Canadá. He empezado de cero en cada país. He sobrevivido un accidente devastador con más de 9 operaciones en un año. He vivido el duelo de perder a mi hermano. He estado endeudada hasta el cuello y he reconstruido mis finanzas desde cero. He pasado por una relación que me borró — y he vuelto a escribirme."
   3. **Cita destacada:** "Todo eso no es mi historia de fondo. Es mi método."
-  4. "Hoy acompaño a personas en transición — especialmente migrantes y mujeres — a reinventarse personal y financieramente. No desde la teoría perfecta, sino desde la experiencia real de quien ya lo vivió."
+  4. "Hoy acompaño a personas en transición — especialmente migrantes — a reinventarse personal y financieramente. Trabajo desde la coherencia entre identidad y dinero, porque he comprobado que no puedes transformar tus finanzas sin transformar primero cómo te ves a ti mismo/a. No desde la teoría perfecta. Desde la experiencia real de quien ya lo vivió."
+  5. "Ayudo a migrantes y personas en transición a reorganizar su dinero, reconectar con su identidad y construir una vida que eligieron — con herramientas concretas, acompañamiento real y sin juicio."
+  6. **Llamada a la acción:** "¿Listo/a para empezar? Agenda tu sesión" (enlaza a la sección de Contacto 06).
 - **Tabla de perfil (credenciales):**
   - Nombre: Yoselin Franco
   - Ubicación: Montreal, Canadá
@@ -134,7 +136,7 @@ Barra superior fija con:
 - **Número fantasma:** 04
 - **Etiqueta:** "Cursos y Talleres"
 - **Título:** "Aprende a tu **propio ritmo**"
-- **Subtítulo:** "Productos digitales y talleres en vivo para transformar tu relación con el dinero."
+- **Subtítulo:** "Cursos, talleres y masterclases en vivo para reinventarte personal y financieramente"
 - **Grilla de 3 tarjetas de curso:**
 
 | Curso | Tipo | Precio | Incluye | CTA |
@@ -256,9 +258,15 @@ Al hacer clic en "Agenda tu taller" se abre un modal con:
 ---
 
 ## 6. Notas finales
-Este documento describe la versión actual de `index-V2.html`. La landing está diseñada como una experiencia de una sola página que guía al visitante desde la primera impresión (hero), pasando por la propuesta de valor y los servicios, la historia personal para generar confianza, la oferta de cursos, la prueba social (testimonios) y cierra con el contacto y la política de sesiones. Todo el contenido está en **español natural y correcto**, con versiones equivalentes en **inglés y francés** para el selector de idiomas (excepto las citas de los testimonios, que se mantienen en español por ser reseñas textuales reales).
+Este documento describe la versión actual de `index.html`. La landing está diseñada como una experiencia de una sola página que guía al visitante desde la primera impresión (hero), pasando por la propuesta de valor y los servicios, la historia personal para generar confianza, la oferta de cursos, la prueba social (testimonios) y cierra con el contacto y la política de sesiones. Todo el contenido está en **español natural y correcto**, con versiones equivalentes en **inglés y francés** para el selector de idiomas (excepto las citas de los testimonios, que se mantienen en español por ser reseñas textuales reales).
 
 ### Cambios recientes aplicados
+- **Hero / Inicio (kicker):** "Mentora en Reinvención Personal y Financiera" → "Coach Personal y Mentora Financiera" (también en `<title>` y `meta_title`; traducciones ES / EN / FR).
+- **Sección 02 — Servicios ("Qué ofrezco"):**
+  - Subtítulo: "100% online vía Google Meet, en español, disponibles para Canadá, EE.UU. y Latinoamérica." → "100% online vía Google Meet, **en español e inglés, disponible donde quiera que estés**."
+  - Nota al cierre: "Todos los servicios son 100% online, **en español e inglés, disponibles donde quiera que estés**."
+- **Sección 03 — Quién Soy:** se reescribió el bloque de historia: el público objetivo pasa de "migrantes y mujeres" a "especialmente migrantes", se añade el párrafo sobre la "coherencia entre identidad y dinero", el bloque de ayuda concreta ("Ayudo a migrantes y personas en transición a reorganizar su dinero… sin juicio") y el CTA final "¿Listo/a para empezar? Agenda tu sesión" (que enlaza a Contacto 06).
+- **Sección 04 — Cursos y Talleres:** subtítulo → "Cursos, talleres y masterclases en vivo para reinventarte personal y financieramente".
 - **Sección "Por qué Yoselin" (opción 03) y marquee:** "Acompañamiento en español" → "Acompañamiento **en español e inglés**" (reflejado también en las traducciones ES / EN / FR).
 - **Sección 06 — Tarjeta "Cómo funcionan las sesiones":**
   - "Disponible en Canadá, EE.UU. y Latinoamérica" → "Disponible **donde quiera que estés**".
