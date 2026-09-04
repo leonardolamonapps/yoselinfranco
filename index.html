@@ -1,0 +1,1501 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoselin Franco | Mentora en Reinvención Personal y Financiera</title>
+  <meta name="description" content="Acompaño a personas en transición a reinventarse personal y financieramente. Mentora en reinvención personal y financiera para migrantes y personas que empiezan de nuevo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --off-white: #E6D9CF;
+      --black: #4A3728;
+      --accent: #DD675D;
+      --gold: #DFB65B;
+      --white: #ffffff;
+      --mid: #CAB19F;
+      --grey-brown: #7A6255;
+      --border-light: rgba(74,55,40,0.14);
+      --border-dark: rgba(255,255,255,0.14);
+      --font: 'Space Grotesk', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    @media (hover: hover) and (pointer: fine) {
+      html, body { cursor: none; }
+      a, button, [data-cursor-hover] { cursor: none; }
+    }
+    .custom-cursor {
+      --cx: 0px; --cy: 0px; --cs: 1;
+      position: fixed;
+      left: 0; top: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 10px rgba(232, 64, 32, 0.7);
+      pointer-events: none;
+      transform: translate(calc(var(--cx) - 50%), calc(var(--cy) - 50%)) scale(var(--cs));
+      z-index: 9999;
+      transition: --cs 0.18s cubic-bezier(0.16,1,0.3,1), background-color 0.18s ease-out,
+        border-color 0.18s ease-out, box-shadow 0.18s ease-out, opacity 0.2s ease-out;
+      opacity: 0;
+    }
+    .custom-cursor.is-ready { opacity: 1; }
+    .custom-cursor--active {
+      --cs: 1.8;
+      background-color: rgba(232, 64, 32, 0.18);
+      box-shadow: 0 0 18px rgba(232, 64, 32, 0.9);
+    }
+    @media (hover: none), (pointer: coarse) { .custom-cursor { display: none; } }
+
+    body {
+      font-family: var(--font);
+      background: var(--off-white);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img, video { display: block; max-width: 100%; }
+
+    /* ===== SPLASH ===== */
+    #splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #4A3728;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .splash-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .splash-label {
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    }
+    .splash-label::before { content: '// '; }
+    .splash-name {
+      font-family: var(--font); font-size: clamp(36px, 9vw, 80px);
+      font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1; text-align: center;
+    }
+    .splash-name span { color: var(--accent); }
+    .splash-track { width: min(260px, 60vw); height: 2px; background: rgba(255,255,255,0.10); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+    .splash-bar { height: 100%; width: 0%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+
+    /* ===== SECTION LABEL // ===== */
+    .sec-label {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0;
+    }
+    .sec-label::before { content: '// '; }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 80ms; }
+    .reveal.d2 { transition-delay: 160ms; }
+    .reveal.d3 { transition-delay: 240ms; }
+    .reveal.d4 { transition-delay: 320ms; }
+    .reveal.d5 { transition-delay: 400ms; }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 14px;
+      padding: 6px 6px 6px 18px;
+      background: rgba(17,17,17,0.55); backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.10); border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+      transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      max-width: calc(100vw - 24px);
+    }
+    #nav.is-hidden { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-16px); }
+    .nav-logo {
+      font-weight: 700; font-size: 15px; color: #fff; letter-spacing: -0.02em;
+      padding-right: 14px; border-right: 1px solid rgba(255,255,255,0.12); line-height: 1; white-space: nowrap;
+    }
+    .nav-logo .nav-dot { color: var(--accent); }
+    .nav-pill { position: relative; display: flex; list-style: none; padding: 0; margin: 0; }
+    .nav-pill a {
+      position: relative; display: block; padding: 8px 14px;
+      font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.6);
+      letter-spacing: 0.01em; border-radius: 999px; transition: color 0.25s; white-space: nowrap; z-index: 2;
+    }
+    .nav-pill a:hover { color: #fff; }
+    .nav-pill a.is-active { color: #fff; }
+    .nav-indicator {
+      position: absolute; top: 0; left: 0; height: 100%; width: 0;
+      background: rgba(221,103,93,0.92); border-radius: 999px; pointer-events: none; z-index: 1; opacity: 0;
+      transition: left 0.45s cubic-bezier(0.16,1,0.3,1), width 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.25s ease;
+    }
+    .nav-indicator.is-ready { opacity: 1; }
+    .lang-switch { display: flex; gap: 2px; margin-left: 4px; }
+    .lang-btn {
+      font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5); background: none; border: none;
+      padding: 6px 7px; border-radius: 999px; transition: color 0.2s, background 0.2s;
+    }
+    .lang-btn:hover { color: #fff; }
+    .lang-btn.active { color: #fff; background: rgba(221,103,93,0.92); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #fff; padding: 9px 16px; border-radius: 999px;
+      background: var(--accent); transition: background 0.25s, transform 0.25s; white-space: nowrap; line-height: 1;
+    }
+    .nav-cta:hover { background: #e58278; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 16px; border-radius: 999px; padding: 6px 12px; line-height: 1; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100dvh; background: var(--black); position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .hero-photo-wrap {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(160deg, var(--black) 0%, #3d2d21 55%, #2b1f16 100%);
+    }
+    .hero-vignette {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(to top, rgba(17,17,17,0.62) 0%, rgba(17,17,17,0.12) 40%, transparent 70%);
+    }
+    .hero-social {
+      position: absolute; left: 40px; top: 50%; transform: translateY(-50%); z-index: 3;
+      display: flex; flex-direction: column; gap: 14px;
+      opacity: 0;
+    }
+    @keyframes heroSocialIn { from { opacity: 0; transform: translateY(calc(-50% + 12px)); } to { opacity: 1; transform: translateY(-50%); } }
+    .hero-social a {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.72);
+      letter-spacing: 0.02em; transition: color 0.2s; white-space: nowrap;
+    }
+    .hero-social a:hover { color: #fff; }
+    .hero-social svg { display: block; flex-shrink: 0; }
+    .hero-title { position: relative; z-index: 3; text-align: right; padding: 0 48px 16px 40px; opacity: 0; }
+    @keyframes heroFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero-title-text { font-size: clamp(14px, 1.4vw, 20px); font-weight: 600; color: #fff; line-height: 1.3; letter-spacing: -0.01em; }
+    .hero-title-slash { color: var(--accent); margin-right: 6px; }
+    .hero-name-wrap { position: relative; z-index: 2; pointer-events: none; user-select: none; }
+    .hero-name {
+      font-family: var(--font); font-size: clamp(40px, 11.5vw, 200px);
+      font-weight: 700; letter-spacing: -0.04em; line-height: 0.82; color: #fff;
+      white-space: nowrap; padding-left: 28px; padding-right: 28px;
+      opacity: 0;
+    }
+    @keyframes heroNameIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
+    /* Entrances play only after the splash finishes */
+    body.is-loaded .hero-name { animation: heroNameIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+    body.is-loaded .hero-social { animation: heroSocialIn 1s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
+    body.is-loaded .hero-title { animation: heroFadeIn 1s ease 0.5s both; }
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; z-index: 3;
+      animation: scrollBob 2.2s ease-in-out infinite 2s;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7);
+    }
+    @keyframes scrollBob { 0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; } 50% { transform: translateX(-50%) translateY(8px); opacity: 1; } }
+
+    /* ===== INTRO (dark) ===== */
+    #intro { background: var(--black); padding: 120px 40px; }
+    .intro-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .intro-statement { font-size: clamp(30px, 3.6vw, 54px); font-weight: 600; line-height: 1.25; letter-spacing: -0.03em; color: #fff; }
+    .intro-statement .accent-phrase, .intro-statement .deco { color: var(--accent); }
+    .intro-right { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+    .intro-body { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 44ch; }
+    .intro-cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .intro-cta {
+      display: inline-block; padding: 12px 32px; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.02em; width: fit-content; transition: all 0.25s;
+    }
+    .intro-cta:hover { border-color: rgba(255,255,255,0.7); color: #fff; transform: translateY(-2px); }
+    .intro-cta.solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .intro-cta.solid:hover { background: #e58278; border-color: #e58278; }
+    .intro-stats { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .intro-stat-num { font-size: 36px; font-weight: 700; color: #fff; letter-spacing: -0.04em; line-height: 1; }
+    .intro-stat-num.red { color: var(--accent); }
+    .intro-stat-label { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; margin-top: 4px; letter-spacing: 0.04em; }
+    .stat-pipe { width: 1px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+
+    /* ===== NUMBERED SECTIONS ===== */
+    .numbered-section { padding: 80px 40px 100px; }
+    .numbered-section.light { background: var(--off-white); }
+    .numbered-section.dark { background: var(--black); }
+    .ns-header {
+      max-width: 1200px; margin: 0 auto 64px; border-top: 1px solid var(--border-dark);
+      padding-top: 24px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .numbered-section.light .ns-header { border-top-color: var(--border-light); }
+    .ns-ghost-num {
+      font-size: clamp(80px, 14vw, 180px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.85;
+      color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.30);
+      user-select: none; pointer-events: none; flex-shrink: 0;
+    }
+    .numbered-section.light .ns-ghost-num {
+      -webkit-text-stroke: 2px rgba(74,55,40,0.40);
+    }
+    .ns-title-block { flex: 1; padding-left: 48px; }
+    .ns-h2 { font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: #fff; margin-top: 12px; }
+    .numbered-section.light .ns-h2 { color: var(--black); }
+    .ns-h2 .deco { color: var(--accent); }
+    .numbered-section.light .ns-h2 .deco { color: var(--accent); }
+    .ns-desc { font-size: 16px; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 50ch; margin-top: 16px; }
+    .numbered-section.light .ns-desc { color: #777; }
+
+    .ns-body { max-width: 1200px; margin: 0 auto; }
+
+    /* h-list */
+    .h-list { max-width: 1200px; margin: 0 auto; }
+    .h-list-item { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border-dark); gap: 24px; transition: all 0.2s; }
+    .numbered-section.light .h-list-item { border-bottom-color: var(--border-light); }
+    .h-list-item:first-child { border-top: 1px solid var(--border-dark); }
+    .numbered-section.light .h-list-item:first-child { border-top-color: var(--border-light); }
+    .h-item-name { font-size: clamp(16px, 1.8vw, 22px); font-weight: 600; color: #fff; letter-spacing: -0.02em; transition: color 0.2s; }
+    .numbered-section.light .h-item-name { color: var(--black); }
+    .h-item-name em, .h-item-name .deco { font-style: normal; color: var(--accent); }
+    .h-item-num { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--accent); flex-shrink: 0; letter-spacing: 0.04em; }
+    .numbered-section.light .h-item-num { color: var(--accent); }
+
+    /* ===== SERVICES (dark cards) ===== */
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+    .service-card { background: #4A3728; padding: 32px 28px; display: flex; flex-direction: column; transition: background 0.25s; }
+    .service-card:hover { background: #553f2e; }
+    .service-card .badge {
+      align-self: flex-start; font-family: var(--mono); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+      border: 1px solid var(--border-dark); padding: 4px 12px; margin-bottom: 22px;
+    }
+    .service-card .badge.gratis { color: var(--accent); border-color: rgba(221,103,93,0.4); }
+    .service-card h3 { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; margin-bottom: 6px; }
+    .service-card .price { font-size: 2.2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; margin-bottom: 10px; }
+    .service-card .price small { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.4); letter-spacing: 0; }
+    .service-card .desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 18px; }
+    .service-card ul { list-style: none; margin-bottom: 24px; flex: 1; }
+    .service-card ul li { position: relative; padding-left: 20px; font-size: 12.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; line-height: 1.5; }
+    .service-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    .service-card .btn { margin-top: auto; text-align: center; }
+    .service-card .btn.dark { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .service-card .btn.dark:hover { background: #e58278; }
+    .service-card .btn.ghost { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .service-card .btn.ghost:hover { border-color: #fff; color: #fff; }
+
+    .phase2 {
+      margin-top: 32px; background: rgba(221,103,93,0.08); border: 1px solid rgba(221,103,93,0.35);
+      padding: 20px 24px; font-size: 13px; color: rgba(255,255,255,0.7); text-align: center; line-height: 1.7;
+    }
+    .phase2 strong { color: #fff; letter-spacing: 0.03em; text-transform: uppercase; font-size: 12px; }
+    .phase2 span { font-weight: 500; color: rgba(255,255,255,0.9); }
+    .free-note { margin-top: 24px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--mono); letter-spacing: 0.03em; }
+
+    /* ===== ABOUT (light) ===== */
+    #about { background: var(--off-white); padding: 100px 40px; }
+    .about-wrap { max-width: 1200px; margin: 0 auto; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-photo { position: relative; }
+    .about-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; filter: grayscale(100%) contrast(1.06); }
+    .about-photo-tag { position: absolute; bottom: -1px; left: -1px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; }
+    .about-text { display: flex; flex-direction: column; }
+    .about-h2 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: var(--black); margin-bottom: 32px; }
+    .about-h2 .deco { color: var(--accent); }
+    .about-body { font-size: 15px; color: #666; line-height: 1.82; margin-bottom: 16px; }
+    .about-body strong { color: var(--black); font-weight: 600; }
+    .about-quote {
+      margin: 24px 0; padding: 22px 24px; border-left: 3px solid var(--accent);
+      font-size: 19px; font-weight: 600; color: var(--black); line-height: 1.4; letter-spacing: -0.02em;
+    }
+    .cert-block { margin-top: 28px; padding: 22px; border: 1px solid var(--border-light); transition: border-color 0.2s; }
+    .cert-block:hover { border-color: var(--accent); }
+    .profile-table { width: 100%; border-collapse: collapse; }
+    .profile-table td { padding: 12px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; color: #666; vertical-align: top; }
+    .profile-table td:first-child { font-weight: 700; color: var(--accent); width: 150px; text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; padding-top: 14px; }
+    .profile-table tr:last-child td { border-bottom: none; }
+    .live-row { display: flex; align-items: center; gap: 8px; margin-top: 28px; font-size: 13px; color: #aaa; font-weight: 500; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: livePulse 2.4s ease-in-out infinite; }
+    @keyframes livePulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
+
+    /* ===== COURSES (dark cards) ===== */
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+    .course-card { background: #4A3728; display: flex; flex-direction: column; height: 100%; transition: background 0.25s; }
+    .course-card:hover { background: #553f2e; }
+    .course-card .top { padding: 32px 28px 0; display: flex; flex-direction: column; flex: 1; }
+    .course-card .badge {
+      display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+      border: 1px solid var(--border-dark); padding: 4px 12px; margin-bottom: 20px;
+    }
+    .course-card .badge.accent { color: var(--accent); border-color: rgba(221,103,93,0.4); }
+    .course-card h3 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; margin-bottom: 6px; }
+    .course-card .price { font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; margin: 8px 0 12px; }
+    .course-card .price small { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.4); }
+    .course-card .desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 16px; }
+    .course-card ul { list-style: none; padding: 0 28px 24px; flex: 1; }
+    .course-card ul li { position: relative; padding-left: 20px; font-size: 12.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+    .course-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    .course-card .foot { padding: 20px 28px; border-top: 1px solid var(--border-dark); display: flex; gap: 12px; flex-wrap: wrap; }
+    .course-card .btn { text-align: center; }
+
+    /* ===== TESTIMONIALS (light) ===== */
+    .testimonial-bg { background: var(--off-white); padding: 100px 40px; }
+    .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; align-items: stretch; }
+    .quote { background: #fff; border: 1px solid var(--border-light); padding: 36px 32px; transition: all 0.25s; display: flex; flex-direction: column; }
+    .quote:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
+    .quote .stars { color: var(--accent); letter-spacing: 2px; margin-bottom: 16px; font-size: 13px; }
+    .quote p { font-size: 19px; font-weight: 500; color: var(--black); line-height: 1.5; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .quote .quote-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .quote .quote-text.expanded { -webkit-line-clamp: unset; display: block; }
+    .quote .quote-toggle { align-self: flex-start; margin: 0 0 20px; padding: 0; background: none; border: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+    .quote .quote-toggle:hover { text-decoration: underline; }
+    .quote footer { font-size: 13px; font-weight: 700; color: var(--accent); }
+    .quote footer span { display: block; font-weight: 400; color: #999; font-size: 12px; margin-top: 4px; }
+
+    /* ===== CONTACT (dark) ===== */
+    #contact { background: var(--black); padding: 100px 40px 120px; }
+    .contact-wrap { max-width: 1200px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
+    .contact-card { background: #4A3728; border: 1px solid var(--border-dark); padding: 36px; transition: all 0.25s; }
+    .contact-card:hover { border-color: rgba(221,103,93,0.4); }
+    .contact-card h3 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .contact-card > p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 22px; }
+    .contact-list { list-style: none; margin-bottom: 26px; }
+    .contact-list li { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--border-dark); font-size: 14px; color: rgba(255,255,255,0.75); }
+    .contact-list li:last-child { border-bottom: none; }
+    .contact-list .ico { font-family: var(--mono); color: var(--accent); flex-shrink: 0; width: 20px; text-align: center; }
+    .contact-list a { transition: color 0.2s; }
+    .contact-list a:hover { color: var(--accent); }
+    .btn { display: inline-block; padding: 13px 26px; border-radius: 999px; border: 1px solid transparent; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.25s; }
+    .btn.dark { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.dark:hover { background: #e58278; transform: translateY(-2px); }
+    .btn-solid { background: var(--accent); color: #fff; }
+    .btn-solid:hover { background: #e58278; transform: translateY(-2px); }
+    .btn-line { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .btn-line:hover { border-color: #fff; color: #fff; }
+
+    .policy { background: #4A3728; border: 1px solid var(--border-dark); padding: 36px; }
+    .policy h3 { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .policy h3 .deco { color: var(--accent); }
+    .policy ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
+    .policy li { position: relative; padding-left: 22px; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .policy li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .policy .nota { margin-top: 18px; font-size: 12px; font-style: italic; color: rgba(255,255,255,0.35); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--black); padding: 56px 40px 32px; border-top: 1px solid var(--border-dark); }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; padding-bottom: 40px; }
+    footer h4 { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    footer p { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 1.7; }
+    footer a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 10px; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    footer .brand { color: #fff; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    footer .brand .nav-dot { color: var(--accent); }
+    .copyright { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border-dark); padding-top: 24px; color: rgba(255,255,255,0.3); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .copyright a { display: inline; color: var(--accent); }
+    .copyright .deco { color: var(--accent); }
+
+    /* ===== Marquee ===== */
+    .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: #fff; padding: 14px 0; }
+    .marquee { display: flex; gap: 0; width: max-content; animation: marquee 26s linear infinite; }
+    .marquee span {
+      font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--black); white-space: nowrap; padding: 0 24px; opacity: 0.55;
+    }
+    .marquee span::after { content: '·'; color: var(--accent); margin-left: 48px; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ===== Talleres Modal ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(20,14,10,0.6); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal {
+      position: relative; width: 100%; max-width: 860px; max-height: 86vh; overflow: auto;
+      background: var(--off-white); color: var(--black);
+      border-radius: 18px; padding: 40px 36px;
+      transform: translateY(20px) scale(0.98); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .modal-overlay.open .modal { transform: none; }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px; width: 38px; height: 38px;
+      border-radius: 50%; border: 1px solid var(--border-light); background: var(--white);
+      color: var(--black); font-size: 18px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .modal-close:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .modal h3 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.03em; color: var(--black); margin-bottom: 6px; }
+    .modal .modal-sub { font-size: 14px; color: var(--grey-brown); line-height: 1.6; margin-bottom: 22px; }
+    .modal .price-line { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; font-weight: 600; }
+    .workshop-table { width: 100%; min-width: 640px; border-collapse: collapse; table-layout: fixed; }
+    .workshop-table col.c-mc { width: 18%; }
+    .workshop-table col.c-date { width: 22%; }
+    .workshop-table col.c-sub { width: 40%; }
+    .workshop-table col.c-key { width: 20%; }
+    .workshop-table thead th {
+      text-align: left; vertical-align: bottom; padding: 10px 14px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-brown); font-family: var(--mono);
+      border-bottom: 2px solid var(--border-light); white-space: nowrap;
+    }
+    .workshop-table tbody td {
+      padding: 15px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top;
+      font-size: 14px; color: var(--black); line-height: 1.55; overflow-wrap: break-word;
+    }
+    .workshop-table tbody tr:last-child td { border-bottom: none; }
+    .workshop-table tbody tr:hover { background: rgba(223,182,91,0.10); }
+    .ws-name { font-weight: 700; }
+    .ws-date-row { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.02em; line-height: 1.4; }
+    .ws-sub { color: var(--grey-brown); }
+    .ws-key { font-family: var(--mono); font-size: 12px; color: var(--grey-brown); }
+    .ws-key strong { color: var(--accent); font-weight: 700; }
+    .modal .modal-note { margin-top: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; color: var(--grey-brown); }
+    @media (max-width: 640px) {
+      .modal { padding: 26px 18px; }
+      .workshop-table { min-width: 700px; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1280px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 980px) {
+      .intro-inner, .about-grid, .contact-grid, .quotes { grid-template-columns: 1fr; }
+      .services-grid, .courses-grid { grid-template-columns: 1fr; }
+      .ns-header { flex-wrap: wrap; gap: 12px; }
+      .ns-title-block { padding-left: 0; }
+      .hero-social { left: 24px; }
+      .menu-toggle { display: block; }
+      .nav-pill {
+        position: absolute; top: calc(100% + 10px); left: 0; right: 0;
+        flex-direction: column; background: rgba(17,17,17,0.97); border-radius: 20px;
+        padding: 10px; display: none; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      }
+      .nav-pill.open { display: flex; }
+      .nav-indicator { display: none; }
+      .nav-pill a { text-align: center; }
+      .lang-switch { justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      .nav-cta { display: none; }
+      #nav { padding-left: 14px; }
+      .nav-logo { padding-right: 10px; }
+    }
+    @media (max-width: 640px) {
+      .intro-inner { gap: 40px; }
+      .intro-stats { flex-direction: column; gap: 20px; }
+      .stat-pipe { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .policy ul { grid-template-columns: 1fr; }
+      .hero-name { padding-left: 20px; padding-right: 20px; }
+      .hero-title { padding: 0 24px 12px 20px; }
+      .ns-header { flex-direction: column; align-items: flex-start; }
+      .ns-ghost-num { font-size: 64px; }
+      .hero-social { display: none; }
+      .service-card .btn, .course-card .btn { width: 100%; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      #intro, #about, .testimonial-bg, #contact { padding-left: 20px; padding-right: 20px; }
+      .numbered-section { padding: 60px 20px 80px; }
+      footer { padding: 40px 20px 24px; }
+      .hero-name { padding-left: 14px; padding-right: 14px; }
+      .hero-title { padding: 0 18px 10px 14px; }
+      .ns-h2 { font-size: 30px; }
+      .ns-desc { font-size: 14px; }
+      .service-card { padding: 26px 22px; }
+      .course-card .top { padding: 26px 22px 0; }
+      .course-card ul { padding: 0 22px 22px; }
+      .course-card .foot { padding: 18px 22px; }
+      .contact-card, .policy { padding: 26px 22px; }
+      .quote { padding: 26px 22px; }
+      .about-quote { font-size: 17px; }
+      .intro-statement { font-size: 30px; }
+      .intro-stats { gap: 16px; }
+      .lang-btn { padding: 6px 6px; }
+      .h-item-name { font-size: 17px; }
+      .phase2 { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- Splash -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-label" data-i18n="hero_kicker">Mentora en Reinvención Personal y Financiera</div>
+      <div class="splash-name">Yoselin <span>Franco</span></div>
+      <div class="splash-track"><div class="splash-bar" id="splashBar"></div></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <a class="nav-logo" href="#hero">Yoselin<span class="nav-dot">.</span></a>
+    <div class="nav-pill" id="navPill">
+      <span class="nav-indicator" id="navIndicator"></span>
+      <a href="#hero" data-i18n="nav_home">Inicio</a>
+      <a href="#about" data-i18n="nav_about">Quién Soy</a>
+      <a href="#services" data-i18n="nav_services">Servicios</a>
+      <a href="#courses" data-i18n="nav_courses">Cursos</a>
+      <a href="#testimonials" data-i18n="nav_testimonials">Testimonios</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+    <a href="https://calendly.com/hola-yoselinfranco/new-meeting-1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_book">Agenda tu sesión</a>
+  </nav>
+
+  <!-- Hero -->
+  <header id="hero">
+    <div class="hero-photo-wrap" aria-hidden="true"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-social">
+      <a href="https://instagram.com/soyyoselinfranco" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a href="http://www.youtube.com/@soyyoselinfranco" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        <span>YouTube</span>
+      </a>
+      <a href="mailto:hola@yoselinfranco.com">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
+        </svg>
+        <span>Email</span>
+      </a>
+    </div>
+    <div class="hero-title">
+      <span class="hero-title-text"><span class="hero-title-slash">/</span><span data-i18n="hero_kicker">Mentora en Reinvención Personal y Financiera</span></span>
+    </div>
+    <div class="hero-name-wrap">
+      <h1 class="hero-name">Yoselin Franco</h1>
+    </div>
+    <div class="scroll-hint">Scroll ↓</div>
+  </header>
+
+  <!-- Intro -->
+  <section id="intro">
+    <div class="intro-inner">
+      <div class="intro-statement reveal" data-i18n="hero_h1">Nunca es tarde para <span class="deco">reinventarte.</span></div>
+      <div class="intro-right">
+        <div class="intro-body reveal d1" data-i18n="hero_lead">
+          Acompaño a personas en transición a reinventarse personal y financieramente — desde la experiencia real, no desde la teoría perfecta.
+        </div>
+        <div class="intro-cta-row reveal d2">
+          <a href="#contact" class="intro-cta solid" data-i18n="hero_cta1">Agenda tu sesión</a>
+          <a href="#about" class="intro-cta" data-i18n="hero_cta2">Conoce mi historia</a>
+        </div>
+        <div class="intro-stats reveal d3">
+          <div>
+            <div class="intro-stat-num red">2</div>
+            <div class="intro-stat-label" data-i18n="hero_m1_label">Países donde he vuelto a empezar</div>
+          </div>
+          <div class="stat-pipe"></div>
+          <div>
+            <div class="intro-stat-num">+ 10</div>
+            <div class="intro-stat-label" data-i18n="hero_m2_label">Años en finanzas</div>
+          </div>
+          <div class="stat-pipe"></div>
+          <div>
+            <div class="intro-stat-num red">+ 30K</div>
+            <div class="intro-stat-label" data-i18n="hero_m3_label">Personas inspiradas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span data-i18n="st1">Finanzas que funcionan</span>
+      <span data-i18n="st2">Reinvención desde la experiencia</span>
+      <span data-i18n="st3">Acompañamiento en español e inglés</span>
+      <span data-i18n="serv_t2">Mentoría Personal</span>
+      <span data-i18n="serv_t3">Mentoría Financiera</span>
+      <span data-i18n="c1_title">Finanzas Personales desde Cero</span>
+      <span data-i18n="st1">Finanzas que funcionan</span>
+      <span data-i18n="st2">Reinvención desde la experiencia</span>
+      <span data-i18n="st3">Acompañamiento en español e inglés</span>
+      <span data-i18n="serv_t2">Mentoría Personal</span>
+      <span data-i18n="serv_t3">Mentoría Financiera</span>
+      <span data-i18n="c1_title">Finanzas Personales desde Cero</span>
+    </div>
+  </div>
+
+  <!-- Value / Statements -->
+  <section class="numbered-section light" id="value">
+    <div class="ns-header">
+      <div class="ns-ghost-num">01</div>
+      <div class="ns-title-block reveal">
+        <span class="sec-label" data-i18n="value_kicker">Por qué Yoselin</span>
+        <h2 class="ns-h2" data-i18n="value_title">Tres razones para <span class="deco">empezar</span></h2>
+      </div>
+    </div>
+    <div class="h-list reveal">
+      <div class="h-list-item">
+        <span class="h-item-name" data-i18n="st1">Finanzas que <em>funcionan</em></span>
+        <span class="h-item-num">01</span>
+      </div>
+      <div class="h-list-item">
+        <span class="h-item-name" data-i18n="st2">Reinvención desde la <em>experiencia</em></span>
+        <span class="h-item-num">02</span>
+      </div>
+      <div class="h-list-item">
+        <span class="h-item-name" data-i18n="st3">Acompañamiento <em>en español e inglés</em></span>
+        <span class="h-item-num">03</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="numbered-section dark" id="services">
+    <div class="ns-header">
+      <div class="ns-ghost-num">02</div>
+      <div class="ns-title-block reveal">
+        <span class="sec-label" data-i18n="serv_kicker">Qué ofrezco</span>
+        <h2 class="ns-h2" data-i18n="serv_title">Mentorías y <span class="deco">paquetes</span></h2>
+        <p class="ns-desc" data-i18n="serv_sub">100% online vía Google Meet, en español, disponibles para Canadá, EE.UU. y Latinoamérica.</p>
+      </div>
+    </div>
+    <div class="ns-body">
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <span class="badge" data-i18n="serv_badge_11">Mentoría 1:1</span>
+          <h3 data-i18n="serv_t2">Mentoría Personal</h3>
+          <div class="price">$75 <small>USD</small></div>
+          <p class="desc" data-i18n="serv_d2">Para reinvención de vida, identidad, propósito, creencias y toma de decisiones.</p>
+          <ul>
+            <li data-i18n="serv2_l1">60 minutos vía Google Meet</li>
+            <li data-i18n="serv2_l2">Sesión grabada disponible</li>
+            <li data-i18n="serv2_l3">Plan de acción al cierre</li>
+            <li data-i18n="serv2_l4">Seguimiento por WhatsApp 48hs</li>
+          </ul>
+          <a href="https://calendly.com/hola-yoselinfranco/new-meeting-1" target="_blank" rel="noopener" class="btn dark" data-i18n="btn_book">Agenda tu sesión</a>
+        </div>
+        <div class="service-card">
+          <span class="badge" data-i18n="serv_badge_11">Mentoría 1:1</span>
+          <h3 data-i18n="serv_t3">Mentoría Financiera</h3>
+          <div class="price">$85 <small>USD</small></div>
+          <p class="desc" data-i18n="serv_d3">Para organizar finanzas personales, presupuesto, deudas, ahorro e inversiones.</p>
+          <ul>
+            <li data-i18n="serv3_l1">60 minutos vía Google Meet</li>
+            <li data-i18n="serv3_l2">Análisis de situación financiera real</li>
+            <li data-i18n="serv3_l3">Plan financiero personalizado</li>
+            <li data-i18n="serv3_l4">Plantillas de presupuesto incluidas</li>
+          </ul>
+          <a href="https://calendly.com/hola-yoselinfranco/mentoria-1-1-financiera" target="_blank" rel="noopener" class="btn dark" data-i18n="btn_book">Agenda tu sesión</a>
+        </div>
+        <div class="service-card">
+          <span class="badge" data-i18n="serv_badge_pack">Paquete · 3 sesiones</span>
+          <h3 data-i18n="serv_t4">Paquete Reinvención</h3>
+          <div class="price">$197 <small>USD</small></div>
+          <p class="desc" data-i18n="serv_d4">3 sesiones de mentoría personal para construir una transformación real y sostenida.</p>
+          <ul>
+            <li data-i18n="serv4_l1">3 sesiones de 60 min</li>
+            <li data-i18n="serv4_l2">Plan de acción progresivo</li>
+            <li data-i18n="serv4_l3">Seguimiento entre sesiones</li>
+            <li data-i18n="serv4_l4">Materiales de trabajo incluidos</li>
+          </ul>
+          <a href="https://calendly.com/hola-yoselinfranco/paquete-3-sesiones-reinvencion" target="_blank" rel="noopener" class="btn dark" data-i18n="btn_book">Agenda tu sesión</a>
+        </div>
+        <div class="service-card">
+          <span class="badge" data-i18n="serv_badge_pack">Paquete · 3 sesiones</span>
+          <h3 data-i18n="serv_t5">Paquete Financiero</h3>
+          <div class="price">$220 <small>USD</small></div>
+          <p class="desc" data-i18n="serv_d5">3 sesiones de mentoría financiera para transformar tu relación con el dinero.</p>
+          <ul>
+            <li data-i18n="serv5_l1">3 sesiones de 60 min</li>
+            <li data-i18n="serv5_l2">Análisis completo de presupuesto</li>
+            <li data-i18n="serv5_l3">Plan financiero a 6 meses</li>
+            <li data-i18n="serv5_l4">Plantillas y guías incluidas</li>
+          </ul>
+          <a href="https://calendly.com/hola-yoselinfranco/paquete-reinvencion-3-sesiones-" target="_blank" rel="noopener" class="btn dark" data-i18n="btn_book">Agenda tu sesión</a>
+        </div>
+      </div>
+      <p class="free-note reveal d1" data-i18n="free_note">
+        <strong>Importante:</strong> Todos los servicios son 100% online y en español, disponibles para Canadá, EE.UU. y Latinoamérica.
+      </p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="numbered-section light" id="about">
+    <div class="about-wrap">
+      <div class="ns-header" style="margin-bottom:64px;">
+        <div class="ns-ghost-num">03</div>
+        <div class="ns-title-block reveal">
+          <span class="sec-label" data-i18n="about_kicker">Quién Soy</span>
+          <h2 class="ns-h2" data-i18n="about_title">Mi historia es <span class="deco">mi método</span></h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="Image.png" alt="Yoselin Franco">
+          <div class="about-photo-tag" data-i18n="about_kicker">Quién Soy</div>
+        </div>
+        <div class="about-text">
+          <div class="about-body reveal" data-i18n="about_p1">
+            Soy <strong>Yoselin Franco</strong>. Venezolana. Contadora Pública egresada de la UCAB.
+            Más de 10 años de experiencia en finanzas, incluyendo el Gobierno de Canadá.
+            Vivo en Montreal en una relación multicultural con un canadiense de Quebec que me enseñó que el tiempo libre existe — y yo le enseñé a comer arepas.
+          </div>
+          <div class="about-body reveal d1" data-i18n="about_p2">
+            He migrado dos veces — Panamá, Canadá. He empezado de cero en cada país.
+            He sobrevivido un accidente devastador con más de 9 operaciones en un año. He vivido
+            el duelo de perder a mi hermano. He estado endeudada hasta el cuello y he reconstruido
+            mis finanzas desde cero. He pasado por una relación que me borró — y he vuelto a escribirme.
+          </div>
+          <div class="about-quote reveal d2" data-i18n="about_quote">"Todo eso no es mi historia de fondo. Es mi método."</div>
+          <div class="about-body reveal d3" data-i18n="about_p3">
+            Hoy acompaño a personas en transición — especialmente migrantes y mujeres — a reinventarse
+            personal y financieramente. No desde la teoría perfecta, sino desde la experiencia real de
+            quien ya lo vivió.
+          </div>
+          <div class="cert-block reveal d4">
+            <table class="profile-table">
+              <tr><td data-i18n="p_nombre">Nombre</td><td data-i18n="p_nombre_v">Yoselin Franco</td></tr>
+              <tr><td data-i18n="p_ubicacion">Ubicación</td><td data-i18n="p_ubicacion_v">Montreal, Canadá</td></tr>
+              <tr><td data-i18n="p_formacion">Formación</td><td data-i18n="p_formacion_v">Contadora Pública — UCAB · Diplomado Coaching con PNL</td></tr>
+              <tr><td data-i18n="p_experiencia">Experiencia</td><td data-i18n="p_experiencia_v">Más de 10 años en finanzas · Gobierno de Canadá</td></tr>
+              <tr><td data-i18n="p_idiomas">Idiomas</td><td data-i18n="p_idiomas_v">Español · Inglés</td></tr>
+              <tr><td data-i18n="p_redes">Redes</td><td data-i18n="p_redes_v">@soyyoselinfranco (Instagram) · <a href="http://www.youtube.com/@soyyoselinfranco" target="_blank" rel="noopener">YouTube: Yoselin Franco | Nunca es tarde</a></td></tr>
+              <tr><td data-i18n="p_email">Email</td><td data-i18n="p_email_v">hola@yoselinfranco.com</td></tr>
+            </table>
+          </div>
+          <div class="live-row reveal d5">
+            <span class="live-dot"></span>
+            <span data-i18n="live_label">Actualmente en Montreal, Canadá · Disponible online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="numbered-section dark" id="courses">
+    <div class="ns-header">
+      <div class="ns-ghost-num">04</div>
+      <div class="ns-title-block reveal">
+        <span class="sec-label" data-i18n="courses_kicker">Cursos y Talleres</span>
+        <h2 class="ns-h2" data-i18n="courses_title">Aprende a tu <span class="deco">propio ritmo</span></h2>
+        <p class="ns-desc" data-i18n="courses_sub">Productos digitales y talleres en vivo para transformar tu relación con el dinero.</p>
+      </div>
+    </div>
+    <div class="ns-body">
+      <div class="courses-grid reveal">
+        <div class="course-card">
+          <div class="top">
+            <span class="badge accent" data-i18n="c1_badge">Curso grabado</span>
+            <h3 data-i18n="c1_title">Finanzas Personales desde Cero</h3>
+            <div class="price">$34 <small>USD</small></div>
+            <p class="desc" data-i18n="c1_desc">Curso grabado de 90min. El taller completo con workbook, plantillas y más.</p>
+            <ul>
+              <li data-i18n="c1_l1">Video completo en 4 módulos</li>
+              <li data-i18n="c1_l2">Workbook + plantillas imprimibles</li>
+              <li data-i18n="c1_l3">Lista de 50 creencias sobre el dinero</li>
+              <li data-i18n="c1_l4">Acceso de por vida</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="https://go.hotmart.com/U106706696X" target="_blank" rel="noopener" class="btn dark" data-i18n="c1_btn">Comprar</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="top">
+            <span class="badge accent" data-i18n="c3_badge">Curso grabado</span>
+            <h3 data-i18n="c3_title">Inversiones desde Cero</h3>
+            <div class="price">$62 <small>USD</small></div>
+            <p class="desc" data-i18n="c3_desc">Curso grabado de 75 min para empezar a invertir sin importar tu edad o cuánto tienes.</p>
+            <ul>
+              <li data-i18n="c3_l1">4 módulos en video</li>
+              <li data-i18n="c3_l2">Workbook + plantillas imprimibles</li>
+              <li data-i18n="c3_l3">Guía de inversiones: Canadá, EE.UU. y Latinoamérica</li>
+              <li data-i18n="c3_l4">Acceso de por vida</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="https://go.hotmart.com/I107427455H" target="_blank" rel="noopener" class="btn dark" data-i18n="c3_btn">Comprar</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="top">
+            <span class="badge" data-i18n="c2_badge">En vivo</span>
+            <h3 data-i18n="c2_title">Talleres en Vivo</h3>
+            <div class="price">Desde $27 <small>USD</small></div>
+            <p class="desc" data-i18n="c2_desc">Talleres grupales sobre finanzas e inversiones. Próximo: Inversiones desde Cero.</p>
+            <ul>
+              <li data-i18n="c2_l1">60–90 minutos en vivo</li>
+              <li data-i18n="c2_l2">Grabación incluida</li>
+              <li data-i18n="c2_l3">Workbook y materiales</li>
+              <li data-i18n="c2_l4">Preguntas en tiempo real</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="#" class="btn dark" data-open-talleres data-i18n="c2_btn1">Agenda tu taller</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonial-bg numbered-section light" id="testimonials">
+    <div class="ns-header" style="max-width:1200px;margin:0 auto 64px;">
+      <div class="ns-ghost-num">05</div>
+      <div class="ns-title-block reveal">
+        <span class="sec-label" data-i18n="test_kicker">Testimonios</span>
+        <h2 class="ns-h2" data-i18n="test_title">Resultados <span class="deco">reales</span></h2>
+        <p class="ns-desc" data-i18n="test_sub">Historias de personas que decidieron reinventarse y dieron el primer paso.</p>
+      </div>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Excelente taller de inversiones desde cero con Yoselin. Ya tenía nociones básicas del tema, pero la clase me ayudó a ponerme al día y a resolver dudas puntuales que traía sobre qué brokers o plataformas usar desde Latinoamérica para acceder al mercado de Estados Unidos. Me gustó que no se quedó en explicaciones técnicas, tocó desde las creencias que muchas veces nos frenan a la hora de invertir, ejemplos que le han funcionado basados en su propia experiencia, hasta las opciones más accesibles según el país de cada quien, y cerró con un plan concreto para dar el primer paso. También recomendó lecturas para seguir aprendiendo por nuestra cuenta. La recomiendo tanto si estás arrancando de cero como si ya tienes algo de camino andado. Yoselin explica con calma, sin juzgar, y deja tarea clara para seguir avanzando."</p>
+        <button type="button" class="quote-toggle">Ver más</button>
+        <footer data-i18n="test_a1">Jose Luis Solano<span data-i18n="test_r1">Taller Inversiones desde Cero</span></footer>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Estoy feliz y quiero compartirles mi experiencia!!! Antes de organizar mis finanzas, necesitaba organizar todo lo que llevaba por dentro. Sin darme cuenta, cargaba con miedo, culpa y mucha ansiedad por errores financieros del pasado. Yoselin llegó a mi vida en el momento indicado. Pensé que solo me ayudaría a hacer un presupuesto o un plan financiero, pero hizo muchísimo más que eso. Me dio un espacio seguro donde pude hablar con total confianza sobre mi situación, mis preocupaciones y hasta mis experiencias más difíciles relacionadas con el dinero. Nunca me sentí juzgada; al contrario, siempre me sentí comprendida, apoyada y motivada. Lo que más valoro de ella es que entiende que detrás de cada número hay una historia. No solo organiza tus finanzas, también te ayuda a sanar tu relación con el dinero y a recuperar la confianza en ti mismo. Hoy me siento con mucha más claridad, más paz y, por primera vez en mucho tiempo, con la seguridad de que puedo alcanzar mis metas financieras. Eso no tiene precio. Si estás buscando a alguien que realmente se involucre en tu proceso, que te escuche con empatía (cosa muy importante para mi), te acompañe sin juzgarte y te ayude a construir un mejor futuro financiero, te recomiendo a Yoselin con los ojos cerrados, estoy profundamente agradecida por todo lo que ha hecho por mí. 💙 Gracias!!"</p>
+        <button type="button" class="quote-toggle">Ver más</button>
+        <footer data-i18n="test_a2">Mariana Leon<span data-i18n="test_r2">Mentoría Financiera 1:1</span></footer>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Participé en el taller Finanzas desde cero, y debo comentar que fue un antes y después para mí y mi familia! Me encantó la manera que Yoselin aborda este tema, que para muchos es sensible y toca fibras incómodas, de una manera profesional, sutil, empatica y sobre todo con estrategia adaptada para generar una solución! Entendí como las emociones y patrones influían en las decisiones financieras y como nuestra cultura no fue educada para estos temas tan importantes ( sin tanto tapujos) La recomiendo al 100% por todo el aporte, trayectoria y profesionalismo que brinda dentro de ese humor y alegría que la caracteriza!"</p>
+        <button type="button" class="quote-toggle">Ver más</button>
+        <footer data-i18n="test_a3">Genesis Hernández<span data-i18n="test_r3">Taller Finanzas desde Cero</span></footer>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Trabajar con Yoselin ha sido una experiencia muy positiva para mí. Desde nuestra primera sesión me sentí escuchada, comprendida y, sobre todo, apoyada. Llegué con muchas dudas e inquietudes sobre mis finanzas, y ella creó un espacio donde me sentí cómoda para empezar este proceso. En la segunda sesión, Yoselin me ayudó a tener una visión mucho más clara de mis cuentas y de mi situación financiera en general. Pude entender mejor dónde estaba parada y cuáles eran mis oportunidades de mejora, algo que me dio mucha tranquilidad y confianza. La tercera sesión fue más detallada y profunda. Hubo momentos en los que me sentí un poco abrumada por toda la información y los cambios que debía considerar, pero en ningún momento sentí que estaba sola. Yoselin siempre estuvo ahí para guiarme, responder mis preguntas y recordarme que este es un proceso paso a paso. Su acompañamiento me ha dado la seguridad de que puedo avanzar hacia mis metas financieras con su ayuda. Recomiendo ampliamente a Yoselin a cualquier persona que esté buscando orientación financiera clara, profesional y humana. Su conocimiento, paciencia y apoyo constante hacen una gran diferencia."</p>
+        <button type="button" class="quote-toggle">Ver más</button>
+        <footer data-i18n="test_a4">Eliana Alvarez<span data-i18n="test_r4">Mentoría Financiera 1:1</span></footer>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="https://g.page/r/Ca3kal9hBJOuEBI/review" target="_blank" rel="noopener" class="intro-cta solid" data-i18n="test_google">Deja tu reseña en Google</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact-wrap">
+      <div class="ns-header" style="margin:0 auto 64px;">
+        <div class="ns-ghost-num">06</div>
+        <div class="ns-title-block reveal">
+          <span class="sec-label" data-i18n="contact_kicker">Contacto · Agenda</span>
+          <h2 class="ns-h2" data-i18n="contact_title">Da el primer paso hacia tu <span class="deco">reinvención</span></h2>
+        </div>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <h3 data-i18n="ctc2_title">Cómo funcionan las sesiones</h3>
+          <p data-i18n="ctc2_desc">Mentoría y coaching personal 100% online. Aquí te cuento cómo es el proceso.</p>
+          <ul class="contact-list">
+            <li><span class="ico">›</span> <span data-i18n="ctc2_l1">Sesiones vía Google Meet</span></li>
+            <li><span class="ico">›</span> <span data-i18n="ctc2_l2">Disponible donde quiera que estés</span></li>
+            <li><span class="ico">›</span> <span data-i18n="ctc2_l3">En español e inglés, con calidez y sin filtros</span></li>
+            <li><span class="ico">›</span> <span data-i18n="ctc2_l4">Pago con tarjeta vía Stripe</span></li>
+          </ul>
+          <a href="#services" class="btn line" data-i18n="ctc2_btn">Ver servicios y precios</a>
+        </div>
+      </div>
+      <div class="policy reveal">
+        <h3 data-i18n="policy_title">Política de <span class="deco">sesiones</span></h3>
+        <ul>
+          <li data-i18n="policy_l1">Reagendamiento: mínimo 48 horas de anticipación</li>
+          <li data-i18n="policy_l2">Cancelación: mínimo 24 horas de anticipación</li>
+          <li data-i18n="policy_l3">Espera máxima: 15 minutos. Pasado ese tiempo la sesión se considera realizada</li>
+          <li data-i18n="policy_l4">Reembolsos: no se realizan una vez agendada la sesión</li>
+          <li data-i18n="policy_l5">Alcance: mentoría y coaching personal. No reemplaza atención psicológica profesional</li>
+        </ul>
+        <p class="nota" data-i18n="policy_nota">Tus datos y conversaciones son tratados con confidencialidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="brand">Yoselin<span class="nav-dot">.</span></div>
+        <p style="margin-top:12px;" data-i18n="footer_desc">Mentora en reinvención personal y financiera para migrantes y personas que empiezan de nuevo. Desde la experiencia real, no desde la teoría perfecta.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_explore">Explora</h4>
+        <a href="#about" data-i18n="nav_about">Quién Soy</a>
+        <a href="#services" data-i18n="nav_services">Servicios</a>
+        <a href="#courses" data-i18n="nav_courses">Cursos y Talleres</a>
+        <a href="#testimonials" data-i18n="nav_testimonials">Testimonios</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact">Contacto</h4>
+        <a href="mailto:hola@yoselinfranco.com" data-i18n="footer_email">hola@yoselinfranco.com</a>
+        <a href="https://instagram.com/soyyoselinfranco" target="_blank" rel="noopener" data-i18n="footer_ig">Instagram · @soyyoselinfranco</a>
+        <a href="http://www.youtube.com/@soyyoselinfranco" target="_blank" rel="noopener" data-i18n="footer_yt">YouTube · Nunca es tarde</a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© <span id="year"></span> Yoselin Franco · <a href="https://yoselinfranco.com" target="_blank" rel="noopener" data-i18n="c_site">yoselinfranco.com</a></p>
+      <p><span class="deco" data-i18n="c_slogan">"Nunca es tarde para reinventarte."</span></p>
+    </div>
+  </footer>
+
+  <!-- Talleres Modal -->
+  <div class="modal-overlay" id="talleresModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Talleres en vivo">
+      <button class="modal-close" id="talleresModalClose" aria-label="Cerrar">✕</button>
+      <h3 data-i18n="modal_title">Talleres en Vivo</h3>
+      <p class="modal-sub" data-i18n="modal_sub">Masterclasses en vivo de 60 a 90 minutos. Desde $27 USD.</p>
+      <p class="price-line" data-i18n="modal_price">Agenda tu cupo escribiendo la palabra clave por DM en Instagram</p>
+      <table class="workshop-table">
+        <colgroup>
+          <col class="c-mc"><col class="c-date"><col class="c-sub"><col class="c-key">
+        </colgroup>
+        <thead>
+          <tr>
+            <th data-i18n="modal_th_mc">Masterclass</th>
+            <th data-i18n="modal_th_date">Fecha</th>
+            <th data-i18n="modal_th_sub">Subtítulo</th>
+            <th data-i18n="modal_th_key">Palabra clave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ws-name" data-i18n="ws1_name">Ahorro Inteligente</td>
+            <td class="ws-date-row" data-i18n="ws1_date">Sáb 12 sep 2026 · 11:00 AM Montreal</td>
+            <td class="ws-sub" data-i18n="ws1_sub">Cómo empezar a ahorrar aunque sientas que no te alcanza</td>
+            <td class="ws-key" data-i18n="ws1_key">Comenta <strong>AHORRO</strong></td>
+          </tr>
+          <tr>
+            <td class="ws-name" data-i18n="ws2_name">Elígete</td>
+            <td class="ws-date-row" data-i18n="ws2_date">Sáb 26 sep 2026</td>
+            <td class="ws-sub" data-i18n="ws2_sub">Cómo construir la identidad que tus metas necesitan</td>
+            <td class="ws-key" data-i18n="ws2_key">Comenta <strong>ELIGETE</strong></td>
+          </tr>
+          <tr>
+            <td class="ws-name" data-i18n="ws3_name">Sal de tus Deudas</td>
+            <td class="ws-date-row" data-i18n="ws3_date">Sáb 17 oct 2026</td>
+            <td class="ws-sub" data-i18n="ws3_sub">Un plan real para liberarte de lo que te pesa</td>
+            <td class="ws-key" data-i18n="ws3_key">Comenta <strong>DEUDA</strong></td>
+          </tr>
+          <tr>
+            <td class="ws-name" data-i18n="ws4_name">Crea Metas y Síguelas</td>
+            <td class="ws-date-row" data-i18n="ws4_date">Sáb 14 nov 2026</td>
+            <td class="ws-sub" data-i18n="ws4_sub">Cómo convertir lo que quieres en un plan que funciona</td>
+            <td class="ws-key" data-i18n="ws4_key">Comenta <strong>META</strong></td>
+          </tr>
+          <tr>
+            <td class="ws-name" data-i18n="ws5_name">Tu Presupuesto 2027</td>
+            <td class="ws-date-row" data-i18n="ws5_date">Sáb 28 nov 2026</td>
+            <td class="ws-sub" data-i18n="ws5_sub">Crea tu plan financiero para el próximo año paso a paso</td>
+            <td class="ws-key" data-i18n="ws5_key">Comenta <strong>PRESUPUESTO</strong></td>
+          </tr>
+          <tr>
+            <td class="ws-name" data-i18n="ws6_name">Tu Visión Board 2027</td>
+            <td class="ws-date-row" data-i18n="ws6_date">Sáb 5 dic 2026</td>
+            <td class="ws-sub" data-i18n="ws6_sub">Cierra el año con intención y diseña tu 2027 con propósito</td>
+            <td class="ws-key" data-i18n="ws6_key">Comenta <strong>VISIÓN</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="modal-note" data-i18n="modal_note">Todos los talleres son en vivo, en español y quedan grabados.</p>
+    </div>
+  </div>
+
+  <script>
+    /* ===== Translations ===== */
+    const translations = {
+      es: {
+        meta_title: "Yoselin Franco | Mentora en Reinvención Personal y Financiera",
+        nav_home: "Inicio", nav_about: "Quién Soy", nav_services: "Servicios", nav_courses: "Cursos",
+        nav_testimonials: "Testimonios", nav_book: "Agenda tu sesión",
+        hero_kicker: "Mentora en Reinvención Personal y Financiera",
+        hero_h1: "Nunca es tarde para <span class=\"deco\">reinventarte.</span>",
+        hero_lead: "Acompaño a personas en transición a reinventarse personal y financieramente — desde la experiencia real, no desde la teoría perfecta.",
+        hero_cta1: "Agenda tu sesión", hero_cta2: "Conoce mi historia",
+        hero_m1_label: "Países donde he vuelto a empezar", hero_m2_label: "Años en finanzas", hero_m3_label: "Personas inspiradas",
+        st1: "Finanzas que <em>funcionan</em>", st2: "Reinvención desde la <em>experiencia</em>", st3: "Acompañamiento <em>en español e inglés</em>",
+        value_kicker: "Por qué Yoselin", value_title: "Tres razones para <span class=\"deco\">empezar</span>",
+        serv_kicker: "Qué ofrezco",
+        serv_title: "Mentorías y <span class=\"deco\">paquetes</span>",
+        serv_sub: "100% online vía Google Meet, en español, disponibles para Canadá, EE.UU. y Latinoamérica.",
+        serv_badge_free: "Exploración gratuita", serv_badge_11: "Mentoría 1:1",
+        serv_badge_pack: "Paquete · 3 sesiones", serv_badge_phase: "Fase 1 · Precios actuales",
+        serv_t1: "Sesión de exploración",
+        serv_d1: "Una sesión de 30 minutos para conocernos y ver si hay conexión antes de iniciar un proceso.",
+        serv1_l1: "30 minutos vía Google Meet", serv1_l2: "Sin compromiso", serv1_l3: "Solo 2 cupos disponibles por semana",
+        serv_t2: "Mentoría Personal",
+        serv_d2: "Para reinvención de vida, identidad, propósito, creencias y toma de decisiones.",
+        serv2_l1: "60 minutos vía Google Meet", serv2_l2: "Sesión grabada disponible", serv2_l3: "Plan de acción al cierre", serv2_l4: "Seguimiento por WhatsApp 48hs",
+        serv_t3: "Mentoría Financiera",
+        serv_d3: "Para organizar finanzas personales, presupuesto, deudas, ahorro e inversiones.",
+        serv3_l1: "60 minutos vía Google Meet", serv3_l2: "Análisis de situación financiera real", serv3_l3: "Plan financiero personalizado", serv3_l4: "Plantillas de presupuesto incluidas",
+        serv_t4: "Paquete Reinvención",
+        serv_d4: "3 sesiones de mentoría personal para construir una transformación real y sostenida.",
+        serv4_l1: "3 sesiones de 60 min", serv4_l2: "Plan de acción progresivo", serv4_l3: "Seguimiento entre sesiones", serv4_l4: "Materiales de trabajo incluidos",
+        serv_t5: "Paquete Financiero",
+        serv_d5: "3 sesiones de mentoría financiera para transformar tu relación con el dinero.",
+        serv5_l1: "3 sesiones de 60 min", serv5_l2: "Análisis completo de presupuesto", serv5_l3: "Plan financiero a 6 meses", serv5_l4: "Plantillas y guías incluidas",
+        serv_t6: "¿No sabes por dónde empezar?",
+        serv_d6: "Agenda tu sesión de exploración gratuita y juntas definimos el mejor camino para ti.",
+        serv6_l1: "30 minutos vía Google Meet", serv6_l2: "Te ayudo a elegir el servicio ideal", serv6_l3: "Sin compromiso", serv6_l4: "Conversación cercana y honesta",
+        btn_book: "Agenda tu sesión", btn_reserve: "Reservar mi cupo",
+        phase2: "<strong>Fase 2 — precios desde septiembre 2026:</strong> <span>Mentoría Personal: $100 USD</span> · <span>Mentoría Financiera: $120 USD</span> · <span>Paquete Reinvención: $270 USD</span> · <span>Paquete Financiero: $320 USD</span>",
+        free_note: "<strong>Importante:</strong> Todos los servicios son 100% online y en español, disponibles para Canadá, EE.UU. y Latinoamérica.",
+        about_kicker: "Quién Soy", about_title: "Mi historia es <span class=\"deco\">mi método</span>",
+        about_p1: "Soy <strong>Yoselin Franco</strong>. Venezolana. Contadora Pública egresada de la UCAB. Más de 10 años de experiencia en finanzas, incluyendo el Gobierno de Canadá. Hoy vivo en Montreal con mi esposo Marco.",
+        about_p2: "He migrado dos veces — Panamá, Canadá. He empezado de cero en cada país. He sobrevivido un accidente devastador con más de 9 operaciones en un año. He vivido el duelo de perder a mi hermano. He estado endeudada hasta el cuello y he reconstruido mis finanzas desde cero. He pasado por una relación que me borró — y he vuelto a escribirme.",
+        about_quote: "\"Todo eso no es mi historia de fondo. Es mi método.\"",
+        about_p3: "Hoy acompaño a personas en transición — especialmente migrantes y mujeres — a reinventarse personal y financieramente. No desde la teoría perfecta, sino desde la experiencia real de quien ya lo vivió.",
+        p_nombre: "Nombre", p_ubicacion: "Ubicación", p_formacion: "Formación", p_experiencia: "Experiencia",
+        p_idiomas: "Idiomas", p_redes: "Redes", p_email: "Email",
+        p_nombre_v: "Yoselin Franco", p_ubicacion_v: "Montreal, Canadá",
+        p_formacion_v: "Contadora Pública — UCAB · Diplomado Coaching con PNL",
+        p_experiencia_v: "Más de 10 años en finanzas · Gobierno de Canadá",
+        p_idiomas_v: "Español · Inglés",
+        p_redes_v: "@soyyoselinfranco (Instagram) · YouTube: Yoselin Franco | Nunca es tarde",
+        p_email_v: "hola@yoselinfranco.com",
+        live_label: "Actualmente en Montreal, Canadá · Disponible online",
+        courses_kicker: "Cursos y Talleres", courses_title: "Aprende a tu <span class=\"deco\">propio ritmo</span>",
+        courses_sub: "Productos digitales y talleres en vivo para transformar tu relación con el dinero.",
+        c1_badge: "Curso grabado", c1_title: "Finanzas Personales desde Cero",
+        c1_desc: "Curso grabado de 90min. El taller completo con workbook, plantillas y más.",
+        c1_l1: "Video completo en 4 módulos", c1_l2: "Workbook + plantillas imprimibles", c1_l3: "Lista de 50 creencias sobre el dinero", c1_l4: "Acceso de por vida",
+        c1_btn: "Comprar",
+        c3_badge: "Curso grabado", c3_title: "Inversiones desde Cero",
+        c3_desc: "Curso grabado de 75 min para empezar a invertir sin importar tu edad o cuánto tienes.",
+        c3_l1: "4 módulos en video", c3_l2: "Workbook + plantillas imprimibles", c3_l3: "Guía de inversiones: Canadá, EE.UU. y Latinoamérica", c3_l4: "Acceso de por vida",
+        c3_btn: "Comprar",
+        c2_badge: "En vivo", c2_title: "Talleres en Vivo",
+        c2_desc: "Talleres grupales sobre finanzas e inversiones. Próximo: Inversiones desde Cero.",
+        c2_l1: "60–90 minutos en vivo", c2_l2: "Grabación incluida", c2_l3: "Workbook y materiales", c2_l4: "Preguntas en tiempo real",
+        c2_btn1: "Agenda tu taller", c2_btn2: "Sígueme en YouTube",
+        modal_title: "Talleres en Vivo",
+        modal_sub: "Masterclasses en vivo de 60 a 90 minutos. Desde $27 USD.",
+        modal_price: "Agenda tu cupo escribiendo la palabra clave por DM en Instagram",
+        modal_th_mc: "Masterclass", modal_th_date: "Fecha", modal_th_sub: "Subtítulo", modal_th_key: "Palabra clave",
+        ws1_name: "Ahorro Inteligente", ws1_date: "Sáb 12 sep 2026 · 11:00 AM Montreal", ws1_sub: "Cómo empezar a ahorrar aunque sientas que no te alcanza", ws1_key: "Comenta AHORRO",
+        ws2_name: "Elígete", ws2_date: "Sáb 26 sep 2026", ws2_sub: "Cómo construir la identidad que tus metas necesitan", ws2_key: "Comenta ELIGETE",
+        ws3_name: "Sal de tus Deudas", ws3_date: "Sáb 17 oct 2026", ws3_sub: "Un plan real para liberarte de lo que te pesa", ws3_key: "Comenta DEUDA",
+        ws4_name: "Crea Metas y Síguelas", ws4_date: "Sáb 14 nov 2026", ws4_sub: "Cómo convertir lo que quieres en un plan que funciona", ws4_key: "Comenta META",
+        ws5_name: "Tu Presupuesto 2027", ws5_date: "Sáb 28 nov 2026", ws5_sub: "Crea tu plan financiero para el próximo año paso a paso", ws5_key: "Comenta PRESUPUESTO",
+        ws6_name: "Tu Visión Board 2027", ws6_date: "Sáb 5 dic 2026", ws6_sub: "Cierra el año con intención y diseña tu 2027 con propósito", ws6_key: "Comenta VISIÓN",
+        modal_note: "Todos los talleres son en vivo, en español y quedan grabados.",
+        test_kicker: "Testimonios", test_title: "Resultados <span class=\"deco\">reales</span>",
+        test_sub: "Historias de personas que decidieron reinventarse y dieron el primer paso.",
+        test_a1: "Jose Luis Solano", test_r1: "Taller Inversiones desde Cero",
+        test_a2: "Mariana Leon", test_r2: "Mentoría Financiera 1:1",
+        test_a3: "Genesis Hernández", test_r3: "Taller Finanzas desde Cero",
+        test_a4: "Eliana Alvarez", test_r4: "Mentoría Financiera 1:1",
+        test_google: "Deja tu reseña en Google",
+        contact_kicker: "Contacto · Agenda", contact_title: "Da el primer paso hacia tu <span class=\"deco\">reinvención</span>",
+        contact_sub: "Agenda tu sesión de exploración gratuita y empieza hoy. Nunca es tarde.",
+        ctc1_title: "Agenda tu sesión",
+        ctc1_desc: "Reserva tu espacio directamente en mi calendario. Elige el día y la hora que mejor te funcionen.",
+        ctc1_l1: "Calendly — reserva tu sesión aquí", ctc1_l2: "hola@yoselinfranco.com",
+        ctc1_l3: "@soyyoselinfranco", ctc1_l4: "Yoselin Franco | Nunca es tarde",
+        ctc1_btn: "Agendar en Calendly",
+        ctc2_title: "Cómo funcionan las sesiones",
+        ctc2_desc: "Mentoría y coaching personal 100% online. Aquí te cuento cómo es el proceso.",
+        ctc2_l1: "Sesiones vía Google Meet", ctc2_l2: "Disponible donde quiera que estés",
+        ctc2_l3: "En español e inglés, con calidez y sin filtros", ctc2_l4: "Pago con tarjeta vía Stripe",
+        ctc2_btn: "Ver servicios y precios",
+        policy_title: "Política de <span class=\"deco\">sesiones</span>",
+        policy_l1: "Reagendamiento: mínimo 48 horas de anticipación",
+        policy_l2: "Cancelación: mínimo 24 horas de anticipación",
+        policy_l3: "Espera máxima: 15 minutos. Pasado ese tiempo la sesión se considera realizada",
+        policy_l4: "Reembolsos: no se realizan una vez agendada la sesión",
+        policy_l5: "Alcance: mentoría y coaching personal. No reemplaza atención psicológica profesional",
+        policy_nota: "Tus datos y conversaciones son tratados con confidencialidad.",
+        footer_desc: "Mentora en reinvención personal y financiera para migrantes y personas que empiezan de nuevo. Desde la experiencia real, no desde la teoría perfecta.",
+        footer_explore: "Explora", footer_contact: "Contacto",
+        footer_email: "hola@yoselinfranco.com", footer_ig: "Instagram · @soyyoselinfranco", footer_yt: "YouTube · Nunca es tarde",
+        c_slogan: "\"Nunca es tarde para reinventarte.\"", c_site: "yoselinfranco.com"
+      },
+      en: {
+        meta_title: "Yoselin Franco | Mentor in Personal & Financial Reinvention",
+        nav_home: "Home", nav_about: "About", nav_services: "Services", nav_courses: "Courses",
+        nav_testimonials: "Testimonials", nav_book: "Book your session",
+        hero_kicker: "Mentor in Personal & Financial Reinvention",
+        hero_h1: "It's never too late to <span class=\"deco\">reinvent yourself.</span>",
+        hero_lead: "I help people in transition reinvent themselves personally and financially — from real experience, not from perfect theory.",
+        hero_cta1: "Book your session", hero_cta2: "Read my story",
+        hero_m1_label: "Countries where I've started over", hero_m2_label: "Years in finance", hero_m3_label: "People inspired",
+        st1: "Money that <em>works</em>", st2: "Reinvention from <em>experience</em>", st3: "Support <em>in Spanish and English</em>",
+        value_kicker: "Why Yoselin", value_title: "Three reasons to <span class=\"deco\">start over</span>",
+        serv_kicker: "What I offer",
+        serv_title: "Mentorships & <span class=\"deco\">packages</span>",
+        serv_sub: "100% online via Google Meet, in Spanish, available in Canada, the US and Latin America.",
+        serv_badge_free: "Free discovery", serv_badge_11: "1:1 Mentorship",
+        serv_badge_pack: "Package · 3 sessions", serv_badge_phase: "Phase 1 · Current prices",
+        serv_t1: "Discovery session",
+        serv_d1: "A 30-minute session to get to know each other and see if we connect before starting a process.",
+        serv1_l1: "30 minutes via Google Meet", serv1_l2: "No commitment", serv1_l3: "Only 2 slots available per week",
+        serv_t2: "Personal Mentorship",
+        serv_d2: "For life reinvention, identity, purpose, beliefs and decision-making.",
+        serv2_l1: "60 minutes via Google Meet", serv2_l2: "Recording available", serv2_l3: "Action plan at the end", serv2_l4: "WhatsApp follow-up within 48h",
+        serv_t3: "Financial Mentorship",
+        serv_d3: "To organize personal finances, budget, debt, savings and investments.",
+        serv3_l1: "60 minutes via Google Meet", serv3_l2: "Real financial situation analysis", serv3_l3: "Personalized financial plan", serv3_l4: "Budget templates included",
+        serv_t4: "Reinvention Package",
+        serv_d4: "3 personal mentorship sessions to build a real, sustained transformation.",
+        serv4_l1: "3 x 60-min sessions", serv4_l2: "Progressive action plan", serv4_l3: "Follow-up between sessions", serv4_l4: "Work materials included",
+        serv_t5: "Financial Package",
+        serv_d5: "3 financial mentorship sessions to transform your relationship with money.",
+        serv5_l1: "3 x 60-min sessions", serv5_l2: "Full budget analysis", serv5_l3: "6-month financial plan", serv5_l4: "Templates and guides included",
+        serv_t6: "Don't know where to start?",
+        serv_d6: "Book your free discovery session and together we'll find the best path for you.",
+        serv6_l1: "30 minutes via Google Meet", serv6_l2: "I'll help you choose the right service", serv6_l3: "No commitment", serv6_l4: "Warm and honest conversation",
+        btn_book: "Book your session", btn_reserve: "Reserve my slot",
+        phase2: "<strong>Phase 2 — prices from September 2026:</strong> <span>Personal Mentorship: $100 USD</span> · <span>Financial Mentorship: $120 USD</span> · <span>Reinvention Package: $270 USD</span> · <span>Financial Package: $320 USD</span>",
+        free_note: "<strong>Important:</strong> All services are 100% online and in Spanish, available in Canada, the US and Latin America.",
+        about_kicker: "About Me", about_title: "My story is <span class=\"deco\">my method</span>",
+        about_p1: "I am <strong>Yoselin Franco</strong>. Venezuelan. Public Accountant graduated from UCAB. Over 10 years of finance experience, including the Government of Canada. I live in Montreal in a multicultural relationship with a Québécois who taught me that free time exists — and I taught him to eat arepas.",
+        about_p2: "I have migrated twice — Panama, Canada. I've started from zero in every country. I survived a devastating accident with more than 9 surgeries in one year. I've grieved the loss of my brother. I've been drowning in debt and rebuilt my finances from zero. I've been through a relationship that erased me — and I've written myself back.",
+        about_quote: "\"None of that is my background story. It's my method.\"",
+        about_p3: "Today I support people in transition — especially migrants — to reinvent themselves personally and financially. Not from the perfect theory, but from the real experience of someone who has lived it.",
+        p_nombre: "Name", p_ubicacion: "Location", p_formacion: "Education", p_experiencia: "Experience",
+        p_idiomas: "Languages", p_redes: "Social", p_email: "Email",
+        p_nombre_v: "Yoselin Franco", p_ubicacion_v: "Montreal, Canada",
+        p_formacion_v: "Public Accountant — UCAB · NLP Coaching Diploma",
+        p_experiencia_v: "10+ years in finance · Government of Canada",
+        p_idiomas_v: "Spanish · English",
+        p_redes_v: "@soyyoselinfranco (Instagram) · YouTube: Yoselin Franco | Never too late",
+        p_email_v: "hola@yoselinfranco.com",
+        live_label: "Currently in Montreal, Canada · Available online",
+        courses_kicker: "Courses & Workshops", courses_title: "Learn at your <span class=\"deco\">own pace</span>",
+        courses_sub: "Digital products and live workshops to transform your relationship with money.",
+        c1_badge: "Recorded course", c1_title: "Personal Finance from Zero",
+        c1_desc: "Recorded 90min course. The full workshop with workbook, templates and more.",
+        c1_l1: "Full video in 4 modules", c1_l2: "Workbook + printable templates", c1_l3: "List of 50 beliefs about money", c1_l4: "Lifetime access",
+        c1_btn: "Buy",
+        c3_badge: "Recorded course", c3_title: "Investing from Zero",
+        c3_desc: "Recorded 75min course to start investing no matter your age or how much you have.",
+        c3_l1: "4 video modules", c3_l2: "Workbook + printable templates", c3_l3: "Investing guide: Canada, US and Latin America", c3_l4: "Lifetime access",
+        c3_btn: "Buy",
+        c2_badge: "Live", c2_title: "Live Workshops",
+        c2_desc: "Group workshops on finance and investing. Next up: Investing from Zero.",
+        c2_l1: "60–90 minutes live", c2_l2: "Recording included", c2_l3: "Workbook and materials", c2_l4: "Real-time questions",
+        c2_btn1: "Book your workshop", c2_btn2: "Follow me on YouTube",
+        modal_title: "Live Workshops",
+        modal_sub: "Live masterclasses of 60 to 90 minutes. From $27 USD.",
+        modal_price: "Claim your spot by DMing the keyword on Instagram",
+        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Subtitle", modal_th_key: "Keyword",
+        ws1_name: "Smart Saving", ws1_date: "Sat Sep 12, 2026 · 11:00 AM Montreal", ws1_sub: "How to start saving even when you feel it's never enough", ws1_key: "Comment SAVING",
+        ws2_name: "Choose Yourself", ws2_date: "Sat Sep 26, 2026", ws2_sub: "How to build the identity your goals need", ws2_key: "Comment CHOOSE",
+        ws3_name: "Get Out of Debt", ws3_date: "Sat Oct 17, 2026", ws3_sub: "A real plan to free yourself from what weighs you down", ws3_key: "Comment DEBT",
+        ws4_name: "Set Goals and Follow Them", ws4_date: "Sat Nov 14, 2026", ws4_sub: "How to turn what you want into a plan that works", ws4_key: "Comment GOAL",
+        ws5_name: "Your 2027 Budget", ws5_date: "Sat Nov 28, 2026", ws5_sub: "Create your financial plan for next year step by step", ws5_key: "Comment BUDGET",
+        ws6_name: "Your 2027 Vision Board", ws6_date: "Sat Dec 5, 2026", ws6_sub: "Close the year with intention and design your 2027 with purpose", ws6_key: "Comment VISION",
+        modal_note: "All workshops are live, in Spanish, and recorded.",
+        test_kicker: "Testimonials", test_title: "Real <span class=\"deco\">results</span>",
+        test_sub: "Stories of people who decided to reinvent themselves and took the first step.",
+        test_a1: "Jose Luis Solano", test_r1: "Investment Workshop from Zero",
+        test_a2: "Mariana Leon", test_r2: "1:1 Financial Mentoring",
+        test_a3: "Genesis Hernández", test_r3: "Finances from Zero Workshop",
+        test_a4: "Eliana Alvarez", test_r4: "1:1 Financial Mentoring",
+        test_google: "Leave your Google review",
+        contact_kicker: "Contact · Booking", contact_title: "Take the first step toward your <span class=\"deco\">reinvention</span>",
+        contact_sub: "Book your free discovery session and start today. It's never too late.",
+        ctc1_title: "Book your session",
+        ctc1_desc: "Reserve your spot directly in my calendar. Pick the day and time that work best for you.",
+        ctc1_l1: "Calendly — book your session here", ctc1_l2: "hola@yoselinfranco.com",
+        ctc1_l3: "@soyyoselinfranco", ctc1_l4: "Yoselin Franco | Never too late",
+        ctc1_btn: "Book on Calendly",
+        ctc2_title: "How sessions work",
+        ctc2_desc: "Mentorship and personal coaching 100% online. Here's how the process works.",
+        ctc2_l1: "Sessions via Google Meet", ctc2_l2: "Available wherever you are",
+        ctc2_l3: "In Spanish and English, warm and unfiltered", ctc2_l4: "Card payment via Stripe",
+        ctc2_btn: "See services and prices",
+        policy_title: "Session <span class=\"deco\">policy</span>",
+        policy_l1: "Rescheduling: at least 48 hours in advance",
+        policy_l2: "Cancellation: at least 24 hours in advance",
+        policy_l3: "Maximum wait: 15 minutes. After that the session counts as completed",
+        policy_l4: "Refunds: none once the session is booked",
+        policy_l5: "Scope: mentorship and personal coaching. Does not replace professional psychological care",
+        policy_nota: "Your data and conversations are treated confidentially.",
+        footer_desc: "Mentor in personal and financial reinvention for migrants and people starting over. From real experience, not from the perfect theory.",
+        footer_explore: "Explore", footer_contact: "Contact",
+        footer_email: "hola@yoselinfranco.com", footer_ig: "Instagram · @soyyoselinfranco", footer_yt: "YouTube · Never too late",
+        c_slogan: "\"It's never too late to reinvent yourself.\"", c_site: "yoselinfranco.com"
+      },
+      fr: {
+        meta_title: "Yoselin Franco | Mentore en réinvention personnelle et financière",
+        nav_home: "Accueil", nav_about: "À propos", nav_services: "Services", nav_courses: "Cours",
+        nav_testimonials: "Témoignages", nav_book: "Réservez votre séance",
+        hero_kicker: "Mentore en réinvention personnelle et financière",
+        hero_h1: "Il n'est jamais trop tard pour <span class=\"deco\">vous réinventer.</span>",
+        hero_lead: "J'accompagne les personnes en transition à se réinventer personnellement et financièrement — à partir de l'expérience réelle, pas de la théorie parfaite.",
+        hero_cta1: "Réservez votre séance", hero_cta2: "Découvrez mon histoire",
+        hero_m1_label: "Pays où j'ai recommencé", hero_m2_label: "Années en finance", hero_m3_label: "Personnes inspirées",
+        st1: "Des finances qui <em>fonctionnent</em>", st2: "Réinvention par <em>l'expérience</em>", st3: "Un accompagnement <em>en espagnol et en anglais</em>",
+        value_kicker: "Pourquoi Yoselin", value_title: "Trois raisons de <span class=\"deco\">recommencer</span>",
+        serv_kicker: "Ce que je propose",
+        serv_title: "Mentorats et <span class=\"deco\">forfaits</span>",
+        serv_sub: "100% en ligne via Google Meet, en espagnol, disponible au Canada, aux États-Unis et en Amérique latine.",
+        serv_badge_free: "Découverte gratuite", serv_badge_11: "Mentorat 1:1",
+        serv_badge_pack: "Forfait · 3 séances", serv_badge_phase: "Phase 1 · Prix actuels",
+        serv_t1: "Séance de découverte",
+        serv_d1: "Une séance de 30 minutes pour faire connaissance et voir s'il y a un lien avant de démarrer un processus.",
+        serv1_l1: "30 minutes via Google Meet", serv1_l2: "Sans engagement", serv1_l3: "Seulement 2 créneaux par semaine",
+        serv_t2: "Mentorat personnel",
+        serv_d2: "Pour la réinvention de vie, l'identité, le but, les croyances et la prise de décision.",
+        serv2_l1: "60 minutes via Google Meet", serv2_l2: "Enregistrement disponible", serv2_l3: "Plan d'action en fin de séance", serv2_l4: "Suivi WhatsApp sous 48 h",
+        serv_t3: "Mentorat financier",
+        serv_d3: "Pour organiser vos finances personnelles, budget, dettes, épargne et investissements.",
+        serv3_l1: "60 minutes via Google Meet", serv3_l2: "Analyse réelle de votre situation financière", serv3_l3: "Plan financier personnalisé", serv3_l4: "Modèles de budget inclus",
+        serv_t4: "Forfait Réinvention",
+        serv_d4: "3 séances de mentorat personnel pour une transformation réelle et durable.",
+        serv4_l1: "3 séances de 60 min", serv4_l2: "Plan d'action progressif", serv4_l3: "Suivi entre les séances", serv4_l4: "Matériel de travail inclus",
+        serv_t5: "Forfait Financier",
+        serv_d5: "3 séances de mentorat financier pour transformer votre rapport à l'argent.",
+        serv5_l1: "3 séances de 60 min", serv5_l2: "Analyse complète du budget", serv5_l3: "Plan financier sur 6 mois", serv5_l4: "Modèles et guides inclus",
+        serv_t6: "Vous ne savez pas par où commencer ?",
+        serv_d6: "Réservez votre séance de découverte gratuite et nous trouverons ensemble le meilleur chemin pour vous.",
+        serv6_l1: "30 minutes via Google Meet", serv6_l2: "Je vous aide à choisir le bon service", serv6_l3: "Sans engagement", serv6_l4: "Conversation chaleureuse et honnête",
+        btn_book: "Réservez votre séance", btn_reserve: "Réserver ma place",
+        phase2: "<strong>Phase 2 — prix à partir de septembre 2026 :</strong> <span>Mentorat personnel : 100 $ USD</span> · <span>Mentorat financier : 120 $ USD</span> · <span>Forfait Réinvention : 270 $ USD</span> · <span>Forfait Financier : 320 $ USD</span>",
+        free_note: "<strong>Important :</strong> Tous les services sont 100% en ligne et en espagnol, disponibles au Canada, aux États-Unis et en Amérique latine.",
+        about_kicker: "À propos", about_title: "Mon histoire est <span class=\"deco\">ma méthode</span>",
+        about_p1: "Je suis <strong>Yoselin Franco</strong>. Vénézuélienne. Comptable publique diplômée de l'UCAB. Plus de 10 ans d'expérience en finance, y compris au gouvernement du Canada. Je vis à Montréal dans une relation multiculturelle avec un Québécois qui m'a appris que le temps libre existe — et moi, je lui ai appris à manger des arepas.",
+        about_p2: "J'ai migré deux fois — Panama, Canada. J'ai tout recommencé à zéro dans chaque pays. J'ai survécu à un accident dévastateur avec plus de 9 opérations en un an. J'ai vécu le deuil de mon frère. J'ai été endettée jusqu'au cou et j'ai reconstruit mes finances de zéro. J'ai traversé une relation qui m'a effacée — et j'ai recommencé à m'écrire.",
+        about_quote: "« Tout cela n'est pas mon histoire de fond. C'est ma méthode. »",
+        about_p3: "Aujourd'hui, j'accompagne les personnes en transition — surtout les migrants — à se réinventer personnellement et financièrement. Pas à partir de la théorie parfaite, mais de l'expérience réelle de celle qui l'a vécu.",
+        p_nombre: "Nom", p_ubicacion: "Lieu", p_formacion: "Formation", p_experiencia: "Expérience",
+        p_idiomas: "Langues", p_redes: "Réseaux", p_email: "Courriel",
+        p_nombre_v: "Yoselin Franco", p_ubicacion_v: "Montréal, Canada",
+        p_formacion_v: "Comptable publique — UCAB · Diplôme de coaching PNL",
+        p_experiencia_v: "10+ ans en finance · Gouvernement du Canada",
+        p_idiomas_v: "Espagnol · Anglais",
+        p_redes_v: "@soyyoselinfranco (Instagram) · YouTube : Yoselin Franco | Jamais trop tard",
+        p_email_v: "hola@yoselinfranco.com",
+        live_label: "Actuellement à Montréal, Canada · Disponible en ligne",
+        courses_kicker: "Cours et ateliers", courses_title: "Apprenez à votre <span class=\"deco\">rythme</span>",
+        courses_sub: "Produits numériques et ateliers en direct pour transformer votre rapport à l'argent.",
+        c1_badge: "Cours enregistré", c1_title: "Finances personnelles de zéro",
+        c1_desc: "Cours enregistré de 90 min. L'atelier complet avec cahier de travail, modèles et plus.",
+        c1_l1: "Vidéo complète en 4 modules", c1_l2: "Cahier de travail + modèles imprimables", c1_l3: "Liste de 50 croyances sur l'argent", c1_l4: "Accès à vie",
+        c1_btn: "Acheter",
+        c3_badge: "Cours enregistré", c3_title: "Investir de zéro",
+        c3_desc: "Cours enregistré de 75 min pour commencer à investir, quel que soit votre âge ou combien vous avez.",
+        c3_l1: "4 modules en vidéo", c3_l2: "Cahier de travail + modèles imprimables", c3_l3: "Guide d'investissement : Canada, États-Unis et Amérique latine", c3_l4: "Accès à vie",
+        c3_btn: "Acheter",
+        c2_badge: "En direct", c2_title: "Ateliers en direct",
+        c2_desc: "Ateliers de groupe sur la finance et l'investissement. À venir : Investir de zéro.",
+        c2_l1: "60–90 minutes en direct", c2_l2: "Enregistrement inclus", c2_l3: "Cahier de travail et matériel", c2_l4: "Questions en temps réel",
+        c2_btn1: "Réservez votre atelier", c2_btn2: "Suivez-moi sur YouTube",
+        modal_title: "Ateliers en direct",
+        modal_sub: "Masterclasses en direct de 60 à 90 minutes. À partir de 27 $ US.",
+        modal_price: "Réservez votre place en envoyant le mot-clé en MP sur Instagram",
+        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Sous-titre", modal_th_key: "Mot-clé",
+        ws1_name: "Épargne Intelligente", ws1_date: "Sam 12 sept 2026 · 11h00 Montréal", ws1_sub: "Comment commencer à épargner même quand vous pensez que ça ne suffit pas", ws1_key: "Commentez ÉPARGNE",
+        ws2_name: "Choisissez-vous", ws2_date: "Sam 26 sept 2026", ws2_sub: "Comment construire l'identité dont vos objectifs ont besoin", ws2_key: "Commentez CHOISIS",
+        ws3_name: "Sortez de vos Dettes", ws3_date: "Sam 17 oct 2026", ws3_sub: "Un plan concret pour vous libérer de ce qui vous pèse", ws3_key: "Commentez DETTE",
+        ws4_name: "Créez des Objectifs et Suivez-les", ws4_date: "Sam 14 nov 2026", ws4_sub: "Comment transformer ce que vous voulez en un plan qui fonctionne", ws4_key: "Commentez OBJECTIF",
+        ws5_name: "Votre Budget 2027", ws5_date: "Sam 28 nov 2026", ws5_sub: "Créez votre plan financier pour l'année prochaine, pas à pas", ws5_key: "Commentez BUDGET",
+        ws6_name: "Votre Vision Board 2027", ws6_date: "Sam 5 déc 2026", ws6_sub: "Terminez l'année avec intention et dessinez votre 2027 avec un but", ws6_key: "Commentez VISION",
+        modal_note: "Tous les ateliers sont en direct, en espagnol et enregistrés.",
+        test_kicker: "Témoignages", test_title: "Des résultats <span class=\"deco\">réels</span>",
+        test_sub: "Des histoires de personnes qui ont décidé de se réinventer et ont fait le premier pas.",
+        test_a1: "Jose Luis Solano", test_r1: "Atelier Investissement pour Débutants",
+        test_a2: "Mariana Leon", test_r2: "Mentorat Financier 1:1",
+        test_a3: "Genesis Hernández", test_r3: "Atelier Finances depuis Zéro",
+        test_a4: "Eliana Alvarez", test_r4: "Mentorat Financier 1:1",
+        test_google: "Laissez votre avis sur Google",
+        contact_kicker: "Contact · Réservation", contact_title: "Faites le premier pas vers votre <span class=\"deco\">réinvention</span>",
+        contact_sub: "Réservez votre séance de découverte gratuite et commencez dès aujourd'hui. Il n'est jamais trop tard.",
+        ctc1_title: "Réservez votre séance",
+        ctc1_desc: "Réservez votre place directement dans mon calendrier. Choisissez le jour et l'heure qui vous conviennent.",
+        ctc1_l1: "Calendly — réservez votre séance ici", ctc1_l2: "hola@yoselinfranco.com",
+        ctc1_l3: "@soyyoselinfranco", ctc1_l4: "Yoselin Franco | Jamais trop tard",
+        ctc1_btn: "Réserver sur Calendly",
+        ctc2_title: "Comment se déroulent les séances",
+        ctc2_desc: "Mentorat et coaching personnel 100% en ligne. Voici comment se passe le processus.",
+        ctc2_l1: "Séances via Google Meet", ctc2_l2: "Disponible où que vous soyez",
+        ctc2_l3: "En espagnol et en anglais, chaleureux et sans filtre", ctc2_l4: "Paiement par carte via Stripe",
+        ctc2_btn: "Voir les services et prix",
+        policy_title: "Politique des <span class=\"deco\">séances</span>",
+        policy_l1: "Reprogrammation : minimum 48 heures à l'avance",
+        policy_l2: "Annulation : minimum 24 heures à l'avance",
+        policy_l3: "Attente maximale : 15 minutes. Passé ce délai, la séance est considérée comme réalisée",
+        policy_l4: "Remboursements : aucun une fois la séance réservée",
+        policy_l5: "Portée : mentorat et coaching personnel. Ne remplace pas un suivi psychologique professionnel",
+        policy_nota: "Vos données et conversations sont traitées de façon confidentielle.",
+        footer_desc: "Mentore en réinvention personnelle et financière pour les migrants et les personnes qui recommencent. À partir de l'expérience réelle, pas de la théorie parfaite.",
+        footer_explore: "Explorer", footer_contact: "Contact",
+        footer_email: "hola@yoselinfranco.com", footer_ig: "Instagram · @soyyoselinfranco", footer_yt: "YouTube · Jamais trop tard",
+        c_slogan: "« Il n'est jamais trop tard pour se réinventer. »", c_site: "yoselinfranco.com"
+      }
+    };
+
+    /* ===== Language switcher ===== */
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const savedLang = localStorage.getItem('yoselin-lang') || 'es';
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.title = translations[lang].meta_title;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+      });
+      langButtons.forEach((b) => b.classList.toggle('active', b.dataset.lang === lang));
+      localStorage.setItem('yoselin-lang', lang);
+    }
+    langButtons.forEach((b) => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ===== Custom cursor ===== */
+    const cursor = document.getElementById('cursor');
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches || !window.matchMedia('(hover: hover)').matches;
+    if (!isCoarse && cursor) {
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let cx = mx, cy = my;
+      let active = false;
+
+      window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        if (!active) { cursor.classList.add('is-ready'); active = true; }
+      }, { passive: true });
+
+      window.addEventListener('mouseleave', () => cursor.classList.remove('is-ready'));
+      window.addEventListener('mouseenter', () => { if (active) cursor.classList.add('is-ready'); });
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, [data-cursor-hover]')) cursor.classList.add('custom-cursor--active');
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, [data-cursor-hover]')) cursor.classList.remove('custom-cursor--active');
+      });
+
+      (function loop() {
+        cx += (mx - cx) * 0.22;
+        cy += (my - cy) * 0.22;
+        cursor.style.setProperty('--cx', cx.toFixed(2) + 'px');
+        cursor.style.setProperty('--cy', cy.toFixed(2) + 'px');
+        requestAnimationFrame(loop);
+      })();
+    }
+
+    /* ===== Splash ===== */
+    const splash = document.getElementById('splash');
+    const splashBar = document.getElementById('splashBar');
+    let progress = 0;
+
+    function hideSplash() {
+      document.body.classList.add('is-loaded');
+      cursor.classList.add('is-ready');
+      splash.style.transition = 'opacity 0.6s ease';
+      splash.style.opacity = '0';
+      setTimeout(() => { splash.style.display = 'none'; }, 600);
+    }
+    const splashTimer = setInterval(() => {
+      progress += Math.random() * 16 + 10;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(splashTimer);
+        setTimeout(hideSplash, 300);
+      }
+      splashBar.style.width = progress + '%';
+    }, 150);
+    setTimeout(() => {
+      if (splash.style.display !== 'none') { clearInterval(splashTimer); hideSplash(); }
+    }, 4500);
+
+    /* ===== Nav hide on scroll ===== */
+    const nav = document.getElementById('nav');
+    let lastScroll = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastScroll && y > 160) nav.classList.add('is-hidden');
+      else nav.classList.remove('is-hidden');
+      lastScroll = y;
+      updateIndicator();
+    });
+
+    /* ===== Nav indicator ===== */
+    const navPill = document.getElementById('navPill');
+    const navIndicator = document.getElementById('navIndicator');
+    const sections = ['hero', 'about', 'services', 'courses', 'testimonials', 'contact'];
+
+    function updateIndicator() {
+      if (window.innerWidth <= 980) return;
+      let current = 'hero';
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = id;
+      });
+      const link = navPill.querySelector(`a[href="#${current}"]`);
+      if (link) {
+        const r = link.getBoundingClientRect();
+        const pr = navPill.getBoundingClientRect();
+        navIndicator.style.left = (r.left - pr.left) + 'px';
+        navIndicator.style.width = r.width + 'px';
+        navIndicator.classList.add('is-ready');
+        navPill.querySelectorAll('a').forEach((a) => a.classList.remove('is-active'));
+        link.classList.add('is-active');
+      }
+    }
+    window.addEventListener('load', updateIndicator);
+
+    /* ===== Mobile menu ===== */
+    const menuToggle = document.getElementById('menuToggle');
+    menuToggle.addEventListener('click', () => navPill.classList.toggle('open'));
+
+    /* ===== Reveal on scroll ===== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    applyLang(savedLang);
+
+
+    /* ===== Talleres Modal ===== */
+    (function(){
+      const openBtn  = document.querySelector('[data-open-talleres]');
+      const modal    = document.getElementById('talleresModal');
+      const closeBtn = document.getElementById('talleresModalClose');
+      if (!modal) return;
+      const open  = () => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+      const close = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+      if (openBtn) openBtn.addEventListener('click', function(e){ e.preventDefault(); open(); });
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+    })();
+
+    document.querySelectorAll('.quote-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var txt = btn.parentElement.querySelector('.quote-text');
+        if (!txt) return;
+        var expanded = txt.classList.toggle('expanded');
+        if (expanded) {
+          btn.textContent = 'Ver menos';
+        } else {
+          btn.textContent = 'Ver más';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
