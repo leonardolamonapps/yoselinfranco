@@ -330,6 +330,7 @@
     .course-card h3 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -0.03em; margin-bottom: 6px; }
     .course-card .price { font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; margin: 8px 0 12px; }
     .course-card .price small { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.4); }
+    .course-card .price s { font-size: 0.65rem; font-weight: 500; opacity: 0.55; margin-left: 8px; letter-spacing: 0; }
     .course-card .desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 16px; }
     .course-card ul { list-style: none; padding: 0 28px 24px; flex: 1; }
     .course-card ul li { position: relative; padding-left: 20px; font-size: 12.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
@@ -433,7 +434,7 @@
     .workshop-table col.c-mc { width: 18%; }
     .workshop-table col.c-date { width: 22%; }
     .workshop-table col.c-sub { width: 40%; }
-    .workshop-table col.c-key { width: 20%; }
+    .workshop-table col.c-link { width: 20%; }
     .workshop-table thead th {
       text-align: left; vertical-align: bottom; padding: 10px 14px; font-size: 11px; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-brown); font-family: var(--mono);
@@ -448,8 +449,8 @@
     .ws-name { font-weight: 700; }
     .ws-date-row { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.02em; line-height: 1.4; }
     .ws-sub { color: var(--grey-brown); }
-    .ws-key { font-family: var(--mono); font-size: 12px; color: var(--grey-brown); }
-    .ws-key strong { color: var(--accent); font-weight: 700; }
+    .ws-link a { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .ws-link a:hover { color: var(--black); }
     .modal .modal-note { margin-top: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; color: var(--grey-brown); }
     @media (max-width: 640px) {
       .modal { padding: 26px 18px; }
@@ -840,19 +841,70 @@
         </div>
         <div class="course-card">
           <div class="top">
+            <span class="badge accent" data-i18n="mc1_badge">Masterclass grabada</span>
+            <h3 data-i18n="mc1_title">Ahorro Inteligente</h3>
+            <div class="price">$17 <small>USD</small></div>
+            <p class="desc" data-i18n="mc1_desc">Masterclass grabada para empezar a ahorrar con un método simple, aunque sientas que el dinero no te alcanza.</p>
+            <ul>
+              <li data-i18n="mc1_l1">Disponible ya · acceso inmediato</li>
+              <li data-i18n="mc1_l2">Masterclass grabada</li>
+              <li data-i18n="mc1_l3">Método simple de ahorro</li>
+              <li data-i18n="mc1_l4">Sin importar cuánto ganes hoy</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="https://go.hotmart.com/O107694194G" target="_blank" rel="noopener" class="btn dark" data-i18n="mc_btn">Comprar</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="top">
+            <span class="badge accent" data-i18n="mc2_badge">Masterclass grabada</span>
+            <h3 data-i18n="mc2_title">Elígete</h3>
+            <div class="price">$17 <small>USD</small></div>
+            <p class="desc" data-i18n="mc2_desc">Vuelve a ti y crea la identidad que tus metas necesitan. Incluye guía, workbook, tarjetas «Soy alguien que…» y recursos extra.</p>
+            <ul>
+              <li data-i18n="mc2_l1">Disponible ya · acceso inmediato</li>
+              <li data-i18n="mc2_l2">Guía + workbook incluidos</li>
+              <li data-i18n="mc2_l3">Tarjetas «Soy alguien que…»</li>
+              <li data-i18n="mc2_l4">Recursos extra</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="https://go.hotmart.com/M107826405M" target="_blank" rel="noopener" class="btn dark" data-i18n="mc_btn">Comprar</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="top">
+            <span class="badge accent" data-i18n="combo_badge">Combo grabado</span>
+            <h3 data-i18n="combo_title">Combo Metas 2027 – 4 Masterclasses</h3>
+            <div class="price">$79 <small>USD</small><s data-i18n="combo_old_price">$108</s></div>
+            <p class="desc" data-i18n="combo_desc">Las 4 masterclasses en vivo a precio especial. Ahorras $29. Incluye todas las grabaciones.</p>
+            <ul>
+              <li data-i18n="combo_l1">Incluye Saldar tus Deudas, Tu Presupuesto 2027, Crea tus Metas 2027 y Vision Board 2027</li>
+              <li data-i18n="combo_l2">En lugar de $108 · ahorras $29</li>
+              <li data-i18n="combo_l3">Incluye todas las grabaciones</li>
+              <li data-i18n="combo_l4">Las 4 masterclasses en vivo</li>
+            </ul>
+          </div>
+          <div class="foot">
+            <a href="https://go.hotmart.com/H107827023X" target="_blank" rel="noopener" class="btn dark" data-i18n="combo_btn">Comprar</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="top">
             <span class="badge" data-i18n="c2_badge">En vivo</span>
             <h3 data-i18n="c2_title">Talleres en Vivo</h3>
             <div class="price">Desde $27 <small>USD</small></div>
-            <p class="desc" data-i18n="c2_desc">Talleres grupales sobre finanzas e inversiones. Próximo: Inversiones desde Cero.</p>
+            <p class="desc" data-i18n="c2_desc">Próximas masterclasses en vivo: Saldar tus Deudas, Tu Presupuesto 2027, Crea tus Metas 2027 y Vision Board 2027.</p>
             <ul>
-              <li data-i18n="c2_l1">60–90 minutos en vivo</li>
+              <li data-i18n="c2_l1">90 minutos en vivo</li>
               <li data-i18n="c2_l2">Grabación incluida</li>
               <li data-i18n="c2_l3">Workbook y materiales</li>
               <li data-i18n="c2_l4">Preguntas en tiempo real</li>
             </ul>
           </div>
           <div class="foot">
-            <a href="#" class="btn dark" data-open-talleres data-i18n="c2_btn1">Agenda tu taller</a>
+            <a href="#" class="btn dark" data-open-talleres data-i18n="c2_btn1">Ver fechas y comprar</a>
           </div>
         </div>
       </div>
@@ -969,60 +1021,48 @@
     <div class="modal" role="dialog" aria-modal="true" aria-label="Talleres en vivo">
       <button class="modal-close" id="talleresModalClose" aria-label="Cerrar">✕</button>
       <h3 data-i18n="modal_title">Talleres en Vivo</h3>
-      <p class="modal-sub" data-i18n="modal_sub">Masterclasses en vivo de 60 a 90 minutos. Desde $27 USD.</p>
-      <p class="price-line" data-i18n="modal_price">Agenda tu cupo escribiendo la palabra clave por DM en Instagram</p>
+      <p class="modal-sub" data-i18n="modal_sub">Masterclasses en vivo de 90 minutos. Desde $27 USD. Grabación incluida.</p>
+      <p class="price-line" data-i18n="modal_price">Compra tu lugar directamente en Hotmart</p>
       <table class="workshop-table">
         <colgroup>
-          <col class="c-mc"><col class="c-date"><col class="c-sub"><col class="c-key">
+          <col class="c-mc"><col class="c-date"><col class="c-sub"><col class="c-link">
         </colgroup>
         <thead>
           <tr>
             <th data-i18n="modal_th_mc">Masterclass</th>
             <th data-i18n="modal_th_date">Fecha</th>
             <th data-i18n="modal_th_sub">Subtítulo</th>
-            <th data-i18n="modal_th_key">Palabra clave</th>
+            <th data-i18n="modal_th_link">Link de compra</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="ws-name" data-i18n="ws1_name">Ahorro Inteligente</td>
-            <td class="ws-date-row" data-i18n="ws1_date">Sáb 12 sep 2026 · 11:00 AM Montreal</td>
-            <td class="ws-sub" data-i18n="ws1_sub">Cómo empezar a ahorrar aunque sientas que no te alcanza</td>
-            <td class="ws-key" data-i18n="ws1_key">Comenta <strong>AHORRO</strong></td>
+            <td class="ws-name" data-i18n="ws1_name">Saldar tus Deudas</td>
+            <td class="ws-date-row" data-i18n="ws1_date">Mié 14 oct 2026 · 7:00 PM Montreal · 90 min</td>
+            <td class="ws-sub" data-i18n="ws1_sub">Un plan claro para pagar lo que debes y recuperar tu paz financiera. Incluye la grabación.</td>
+            <td class="ws-link"><a href="https://go.hotmart.com/F107823801K" target="_blank" rel="noopener" data-i18n="mc_buy">Comprar en Hotmart</a></td>
           </tr>
           <tr>
-            <td class="ws-name" data-i18n="ws2_name">Elígete</td>
-            <td class="ws-date-row" data-i18n="ws2_date">Sáb 26 sep 2026</td>
-            <td class="ws-sub" data-i18n="ws2_sub">Cómo construir la identidad que tus metas necesitan</td>
-            <td class="ws-key" data-i18n="ws2_key">Comenta <strong>ELIGETE</strong></td>
+            <td class="ws-name" data-i18n="ws2_name">Tu Presupuesto 2027</td>
+            <td class="ws-date-row" data-i18n="ws2_date">Mié 18 nov 2026 · 7:00 PM Montreal · 90 min</td>
+            <td class="ws-sub" data-i18n="ws2_sub">Organiza tu dinero y empieza el año sabiendo a dónde va cada dólar. Incluye la grabación.</td>
+            <td class="ws-link"><a href="https://go.hotmart.com/H107825578L" target="_blank" rel="noopener" data-i18n="mc_buy">Comprar en Hotmart</a></td>
           </tr>
           <tr>
-            <td class="ws-name" data-i18n="ws3_name">Sal de tus Deudas</td>
-            <td class="ws-date-row" data-i18n="ws3_date">Sáb 17 oct 2026</td>
-            <td class="ws-sub" data-i18n="ws3_sub">Un plan real para liberarte de lo que te pesa</td>
-            <td class="ws-key" data-i18n="ws3_key">Comenta <strong>DEUDA</strong></td>
+            <td class="ws-name" data-i18n="ws3_name">Crea tus Metas 2027</td>
+            <td class="ws-date-row" data-i18n="ws3_date">Mié 25 nov 2026 · 7:00 PM Montreal · 90 min</td>
+            <td class="ws-sub" data-i18n="ws3_sub">Define lo que quieres lograr y conviértelo en pasos que sí vas a cumplir. Incluye la grabación.</td>
+            <td class="ws-link"><a href="https://go.hotmart.com/D107825979J" target="_blank" rel="noopener" data-i18n="mc_buy">Comprar en Hotmart</a></td>
           </tr>
           <tr>
-            <td class="ws-name" data-i18n="ws4_name">Crea Metas y Síguelas</td>
-            <td class="ws-date-row" data-i18n="ws4_date">Sáb 14 nov 2026</td>
-            <td class="ws-sub" data-i18n="ws4_sub">Cómo convertir lo que quieres en un plan que funciona</td>
-            <td class="ws-key" data-i18n="ws4_key">Comenta <strong>META</strong></td>
-          </tr>
-          <tr>
-            <td class="ws-name" data-i18n="ws5_name">Tu Presupuesto 2027</td>
-            <td class="ws-date-row" data-i18n="ws5_date">Sáb 28 nov 2026</td>
-            <td class="ws-sub" data-i18n="ws5_sub">Crea tu plan financiero para el próximo año paso a paso</td>
-            <td class="ws-key" data-i18n="ws5_key">Comenta <strong>PRESUPUESTO</strong></td>
-          </tr>
-          <tr>
-            <td class="ws-name" data-i18n="ws6_name">Tu Visión Board 2027</td>
-            <td class="ws-date-row" data-i18n="ws6_date">Sáb 5 dic 2026</td>
-            <td class="ws-sub" data-i18n="ws6_sub">Cierra el año con intención y diseña tu 2027 con propósito</td>
-            <td class="ws-key" data-i18n="ws6_key">Comenta <strong>VISIÓN</strong></td>
+            <td class="ws-name" data-i18n="ws4_name">Vision Board 2027</td>
+            <td class="ws-date-row" data-i18n="ws4_date">Sáb 5 dic 2026 · 11:00 AM Montreal · 90 min</td>
+            <td class="ws-sub" data-i18n="ws4_sub">Crea en vivo el tablero que te recuerde cada día la vida que estás eligiendo. Incluye la grabación.</td>
+            <td class="ws-link"><a href="https://go.hotmart.com/R107826208N" target="_blank" rel="noopener" data-i18n="mc_buy">Comprar en Hotmart</a></td>
           </tr>
         </tbody>
       </table>
-      <p class="modal-note" data-i18n="modal_note">Todos los talleres son en vivo, en español y quedan grabados.</p>
+      <p class="modal-note" data-i18n="modal_note">Todas las masterclasses son en vivo, en español y la grabación queda incluida.</p>
     </div>
   </div>
 
@@ -1087,26 +1127,37 @@
         c1_badge: "Curso grabado", c1_title: "Finanzas Personales desde Cero",
         c1_desc: "Curso grabado de 90min. El taller completo con workbook, plantillas y más.",
         c1_l1: "Video completo en 4 módulos", c1_l2: "Workbook + plantillas imprimibles", c1_l3: "Lista de 50 creencias sobre el dinero", c1_l4: "Acceso de por vida",
-        c1_btn: "Comprar",
-        c3_badge: "Curso grabado", c3_title: "Inversiones desde Cero",
-        c3_desc: "Curso grabado de 75 min para empezar a invertir sin importar tu edad o cuánto tienes.",
-        c3_l1: "4 módulos en video", c3_l2: "Workbook + plantillas imprimibles", c3_l3: "Guía de inversiones: Canadá, EE.UU. y Latinoamérica", c3_l4: "Acceso de por vida",
-        c3_btn: "Comprar",
-        c2_badge: "En vivo", c2_title: "Talleres en Vivo",
-        c2_desc: "Talleres grupales sobre finanzas e inversiones. Próximo: Inversiones desde Cero.",
-        c2_l1: "60–90 minutos en vivo", c2_l2: "Grabación incluida", c2_l3: "Workbook y materiales", c2_l4: "Preguntas en tiempo real",
-        c2_btn1: "Agenda tu taller", c2_btn2: "Sígueme en YouTube",
+          c1_btn: "Comprar",
+          c3_badge: "Curso grabado", c3_title: "Inversiones desde Cero",
+          c3_desc: "Curso grabado de 75 min para empezar a invertir sin importar tu edad o cuánto tienes.",
+          c3_l1: "4 módulos en video", c3_l2: "Workbook + plantillas imprimibles", c3_l3: "Guía de inversiones: Canadá, EE.UU. y Latinoamérica", c3_l4: "Acceso de por vida",
+          c3_btn: "Comprar",
+          mc1_badge: "Masterclass grabada", mc1_title: "Ahorro Inteligente",
+          mc1_desc: "Masterclass grabada para empezar a ahorrar con un método simple, aunque sientas que el dinero no te alcanza.",
+          mc1_l1: "Disponible ya · acceso inmediato", mc1_l2: "Masterclass grabada", mc1_l3: "Método simple de ahorro", mc1_l4: "Sin importar cuánto ganes hoy",
+          mc_btn: "Comprar",
+          mc2_badge: "Masterclass grabada", mc2_title: "Elígete",
+          mc2_desc: "Vuelve a ti y crea la identidad que tus metas necesitan. Incluye guía, workbook, tarjetas «Soy alguien que…» y recursos extra.",
+          mc2_l1: "Disponible ya · acceso inmediato", mc2_l2: "Guía + workbook incluidos", mc2_l3: "Tarjetas «Soy alguien que…»", mc2_l4: "Recursos extra",
+          combo_badge: "Combo grabado", combo_title: "Combo Metas 2027 – 4 Masterclasses", combo_old_price: "$108",
+          combo_desc: "Las 4 masterclasses en vivo a precio especial. Ahorras $29. Incluye todas las grabaciones.",
+          combo_l1: "Incluye Saldar tus Deudas, Tu Presupuesto 2027, Crea tus Metas 2027 y Vision Board 2027", combo_l2: "En lugar de $108 · ahorras $29",
+          combo_l3: "Incluye todas las grabaciones", combo_l4: "Las 4 masterclasses en vivo",
+          combo_btn: "Comprar",
+          c2_badge: "En vivo", c2_title: "Talleres en Vivo",
+          c2_desc: "Próximas masterclasses en vivo: Saldar tus Deudas, Tu Presupuesto 2027, Crea tus Metas 2027 y Vision Board 2027.",
+          c2_l1: "90 minutos en vivo", c2_l2: "Grabación incluida", c2_l3: "Workbook y materiales", c2_l4: "Preguntas en tiempo real",
+          c2_btn1: "Ver fechas y comprar", c2_btn2: "Sígueme en YouTube",
         modal_title: "Talleres en Vivo",
-        modal_sub: "Masterclasses en vivo de 60 a 90 minutos. Desde $27 USD.",
-        modal_price: "Agenda tu cupo escribiendo la palabra clave por DM en Instagram",
-        modal_th_mc: "Masterclass", modal_th_date: "Fecha", modal_th_sub: "Subtítulo", modal_th_key: "Palabra clave",
-        ws1_name: "Ahorro Inteligente", ws1_date: "Sáb 12 sep 2026 · 11:00 AM Montreal", ws1_sub: "Cómo empezar a ahorrar aunque sientas que no te alcanza", ws1_key: "Comenta AHORRO",
-        ws2_name: "Elígete", ws2_date: "Sáb 26 sep 2026", ws2_sub: "Cómo construir la identidad que tus metas necesitan", ws2_key: "Comenta ELIGETE",
-        ws3_name: "Sal de tus Deudas", ws3_date: "Sáb 17 oct 2026", ws3_sub: "Un plan real para liberarte de lo que te pesa", ws3_key: "Comenta DEUDA",
-        ws4_name: "Crea Metas y Síguelas", ws4_date: "Sáb 14 nov 2026", ws4_sub: "Cómo convertir lo que quieres en un plan que funciona", ws4_key: "Comenta META",
-        ws5_name: "Tu Presupuesto 2027", ws5_date: "Sáb 28 nov 2026", ws5_sub: "Crea tu plan financiero para el próximo año paso a paso", ws5_key: "Comenta PRESUPUESTO",
-        ws6_name: "Tu Visión Board 2027", ws6_date: "Sáb 5 dic 2026", ws6_sub: "Cierra el año con intención y diseña tu 2027 con propósito", ws6_key: "Comenta VISIÓN",
-        modal_note: "Todos los talleres son en vivo, en español y quedan grabados.",
+        modal_sub: "Masterclasses en vivo de 90 minutos. Desde $27 USD. Grabación incluida.",
+        modal_price: "Compra tu lugar directamente en Hotmart",
+        modal_th_mc: "Masterclass", modal_th_date: "Fecha", modal_th_sub: "Subtítulo", modal_th_link: "Link de compra",
+        mc_buy: "Comprar en Hotmart",
+          ws1_name: "Saldar tus Deudas", ws1_date: "Mié 14 oct 2026 · 7:00 PM Montreal · 90 min", ws1_sub: "Un plan claro para pagar lo que debes y recuperar tu paz financiera. Incluye la grabación.",
+          ws2_name: "Tu Presupuesto 2027", ws2_date: "Mié 18 nov 2026 · 7:00 PM Montreal · 90 min", ws2_sub: "Organiza tu dinero y empieza el año sabiendo a dónde va cada dólar. Incluye la grabación.",
+          ws3_name: "Crea tus Metas 2027", ws3_date: "Mié 25 nov 2026 · 7:00 PM Montreal · 90 min", ws3_sub: "Define lo que quieres lograr y conviértelo en pasos que sí vas a cumplir. Incluye la grabación.",
+          ws4_name: "Vision Board 2027", ws4_date: "Sáb 5 dic 2026 · 11:00 AM Montreal · 90 min", ws4_sub: "Crea en vivo el tablero que te recuerde cada día la vida que estás eligiendo. Incluye la grabación.",
+        modal_note: "Todas las masterclasses son en vivo, en español y la grabación queda incluida.",
         test_kicker: "Testimonios", test_title: "Resultados <span class=\"deco\">reales</span>",
         test_sub: "Historias de personas que decidieron reinventarse y dieron el primer paso.",
         test_a1: "Jose Luis Solano", test_r1: "Taller Inversiones desde Cero",
@@ -1196,26 +1247,37 @@
         c1_badge: "Recorded course", c1_title: "Personal Finance from Zero",
         c1_desc: "Recorded 90min course. The full workshop with workbook, templates and more.",
         c1_l1: "Full video in 4 modules", c1_l2: "Workbook + printable templates", c1_l3: "List of 50 beliefs about money", c1_l4: "Lifetime access",
-        c1_btn: "Buy",
-        c3_badge: "Recorded course", c3_title: "Investing from Zero",
-        c3_desc: "Recorded 75min course to start investing no matter your age or how much you have.",
-        c3_l1: "4 video modules", c3_l2: "Workbook + printable templates", c3_l3: "Investing guide: Canada, US and Latin America", c3_l4: "Lifetime access",
-        c3_btn: "Buy",
-        c2_badge: "Live", c2_title: "Live Workshops",
-        c2_desc: "Group workshops on finance and investing. Next up: Investing from Zero.",
-        c2_l1: "60–90 minutes live", c2_l2: "Recording included", c2_l3: "Workbook and materials", c2_l4: "Real-time questions",
-        c2_btn1: "Book your workshop", c2_btn2: "Follow me on YouTube",
+          c1_btn: "Buy",
+          c3_badge: "Recorded course", c3_title: "Investing from Zero",
+          c3_desc: "Recorded 75min course to start investing no matter your age or how much you have.",
+          c3_l1: "4 video modules", c3_l2: "Workbook + printable templates", c3_l3: "Investing guide: Canada, US and Latin America", c3_l4: "Lifetime access",
+          c3_btn: "Buy",
+          mc1_badge: "Recorded masterclass", mc1_title: "Smart Saving",
+          mc1_desc: "A recorded masterclass to start saving with a simple method, even if you feel money is never enough.",
+          mc1_l1: "Available now · instant access", mc1_l2: "Recorded masterclass", mc1_l3: "Simple saving method", mc1_l4: "Works no matter what you earn today",
+          mc_btn: "Buy",
+          mc2_badge: "Recorded masterclass", mc2_title: "Choose Yourself",
+          mc2_desc: "Come back to yourself and build the identity your goals need. Includes guide, workbook, \"I am someone who...\" cards and extra resources.",
+          mc2_l1: "Available now · instant access", mc2_l2: "Guide + workbook included", mc2_l3: "\"I am someone who...\" cards", mc2_l4: "Extra resources",
+          combo_badge: "Recorded bundle", combo_title: "Metas 2027 Bundle – 4 Masterclasses", combo_old_price: "$108",
+          combo_desc: "All 4 live masterclasses at a special price. You save $29. Includes every recording.",
+          combo_l1: "Includes Get Out of Debt, Your 2027 Budget, Set Goals 2027 and Vision Board 2027", combo_l2: "Instead of $108 · you save $29",
+          combo_l3: "All recordings included", combo_l4: "The 4 live masterclasses",
+          combo_btn: "Buy",
+          c2_badge: "Live", c2_title: "Live Workshops",
+          c2_desc: "Upcoming live masterclasses: Get Out of Debt, Your 2027 Budget, Set Goals 2027 and Vision Board 2027.",
+          c2_l1: "90 minutes live", c2_l2: "Recording included", c2_l3: "Workbook and materials", c2_l4: "Real-time questions",
+          c2_btn1: "See dates & buy", c2_btn2: "Follow me on YouTube",
         modal_title: "Live Workshops",
-        modal_sub: "Live masterclasses of 60 to 90 minutes. From $27 USD.",
-        modal_price: "Claim your spot by DMing the keyword on Instagram",
-        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Subtitle", modal_th_key: "Keyword",
-        ws1_name: "Smart Saving", ws1_date: "Sat Sep 12, 2026 · 11:00 AM Montreal", ws1_sub: "How to start saving even when you feel it's never enough", ws1_key: "Comment SAVING",
-        ws2_name: "Choose Yourself", ws2_date: "Sat Sep 26, 2026", ws2_sub: "How to build the identity your goals need", ws2_key: "Comment CHOOSE",
-        ws3_name: "Get Out of Debt", ws3_date: "Sat Oct 17, 2026", ws3_sub: "A real plan to free yourself from what weighs you down", ws3_key: "Comment DEBT",
-        ws4_name: "Set Goals and Follow Them", ws4_date: "Sat Nov 14, 2026", ws4_sub: "How to turn what you want into a plan that works", ws4_key: "Comment GOAL",
-        ws5_name: "Your 2027 Budget", ws5_date: "Sat Nov 28, 2026", ws5_sub: "Create your financial plan for next year step by step", ws5_key: "Comment BUDGET",
-        ws6_name: "Your 2027 Vision Board", ws6_date: "Sat Dec 5, 2026", ws6_sub: "Close the year with intention and design your 2027 with purpose", ws6_key: "Comment VISION",
-        modal_note: "All workshops are live, in Spanish, and recorded.",
+        modal_sub: "Live masterclasses of 90 minutes. From $27 USD. Recording included.",
+        modal_price: "Get your spot by purchasing directly on Hotmart",
+        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Subtitle", modal_th_link: "Purchase link",
+        mc_buy: "Buy on Hotmart",
+          ws1_name: "Get Out of Debt", ws1_date: "Wed Oct 14, 2026 · 7:00 PM Montreal · 90 min", ws1_sub: "A clear plan to pay off what you owe and get your financial peace back. Recording included.",
+          ws2_name: "Your 2027 Budget", ws2_date: "Wed Nov 18, 2026 · 7:00 PM Montreal · 90 min", ws2_sub: "Organize your money and start the year knowing where every dollar goes. Recording included.",
+          ws3_name: "Set Goals 2027", ws3_date: "Wed Nov 25, 2026 · 7:00 PM Montreal · 90 min", ws3_sub: "Define what you want to achieve and turn it into steps you'll actually take. Recording included.",
+          ws4_name: "Vision Board 2027", ws4_date: "Sat Dec 5, 2026 · 11:00 AM Montreal · 90 min", ws4_sub: "Create live the board that reminds you every day of the life you're choosing. Recording included.",
+        modal_note: "All masterclasses are live, in Spanish, and the recording is included.",
         test_kicker: "Testimonials", test_title: "Real <span class=\"deco\">results</span>",
         test_sub: "Stories of people who decided to reinvent themselves and took the first step.",
         test_a1: "Jose Luis Solano", test_r1: "Investment Workshop from Zero",
@@ -1305,26 +1367,37 @@
         c1_badge: "Cours enregistré", c1_title: "Finances personnelles de zéro",
         c1_desc: "Cours enregistré de 90 min. L'atelier complet avec cahier de travail, modèles et plus.",
         c1_l1: "Vidéo complète en 4 modules", c1_l2: "Cahier de travail + modèles imprimables", c1_l3: "Liste de 50 croyances sur l'argent", c1_l4: "Accès à vie",
-        c1_btn: "Acheter",
-        c3_badge: "Cours enregistré", c3_title: "Investir de zéro",
-        c3_desc: "Cours enregistré de 75 min pour commencer à investir, quel que soit votre âge ou combien vous avez.",
-        c3_l1: "4 modules en vidéo", c3_l2: "Cahier de travail + modèles imprimables", c3_l3: "Guide d'investissement : Canada, États-Unis et Amérique latine", c3_l4: "Accès à vie",
-        c3_btn: "Acheter",
-        c2_badge: "En direct", c2_title: "Ateliers en direct",
-        c2_desc: "Ateliers de groupe sur la finance et l'investissement. À venir : Investir de zéro.",
-        c2_l1: "60–90 minutes en direct", c2_l2: "Enregistrement inclus", c2_l3: "Cahier de travail et matériel", c2_l4: "Questions en temps réel",
-        c2_btn1: "Réservez votre atelier", c2_btn2: "Suivez-moi sur YouTube",
+          c1_btn: "Acheter",
+          c3_badge: "Cours enregistré", c3_title: "Investir de zéro",
+          c3_desc: "Cours enregistré de 75 min pour commencer à investir, quel que soit votre âge ou combien vous avez.",
+          c3_l1: "4 modules en vidéo", c3_l2: "Cahier de travail + modèles imprimables", c3_l3: "Guide d'investissement : Canada, États-Unis et Amérique latine", c3_l4: "Accès à vie",
+          c3_btn: "Acheter",
+          mc1_badge: "Masterclass enregistrée", mc1_title: "Épargne Intelligente",
+          mc1_desc: "Masterclass enregistrée pour commencer à épargner avec une méthode simple, même si vous pensez que l'argent ne suffit pas.",
+          mc1_l1: "Disponible dès maintenant · accès immédiat", mc1_l2: "Masterclass enregistrée", mc1_l3: "Méthode simple d'épargne", mc1_l4: "Peu importe ce que vous gagnez aujourd'hui",
+          mc_btn: "Acheter",
+          mc2_badge: "Masterclass enregistrée", mc2_title: "Choisissez-vous",
+          mc2_desc: "Revenez à vous et créez l'identité dont vos objectifs ont besoin. Inclut le guide, le cahier de travail, les cartes « Je suis quelqu'un qui… » et des ressources supplémentaires.",
+          mc2_l1: "Disponible dès maintenant · accès immédiat", mc2_l2: "Guide + cahier de travail inclus", mc2_l3: "Cartes « Je suis quelqu'un qui… »", mc2_l4: "Ressources supplémentaires",
+          combo_badge: "Pack enregistré", combo_title: "Pack Objectifs 2027 – 4 Masterclasses", combo_old_price: "108 $",
+          combo_desc: "Les 4 masterclasses en direct à prix spécial. Vous économisez 29 $. Tous les enregistrements inclus.",
+          combo_l1: "Inclut Sortez de vos Dettes, Votre Budget 2027, Créez vos Objectifs 2027 et Vision Board 2027", combo_l2: "Au lieu de 108 $ · vous économisez 29 $",
+          combo_l3: "Tous les enregistrements inclus", combo_l4: "Les 4 masterclasses en direct",
+          combo_btn: "Acheter",
+          c2_badge: "En direct", c2_title: "Ateliers en direct",
+          c2_desc: "Prochaines masterclasses en direct : Sortez de vos Dettes, Votre Budget 2027, Créez vos Objectifs 2027 et Vision Board 2027.",
+          c2_l1: "90 minutes en direct", c2_l2: "Enregistrement inclus", c2_l3: "Cahier de travail et matériel", c2_l4: "Questions en temps réel",
+          c2_btn1: "Voir les dates et acheter", c2_btn2: "Suivez-moi sur YouTube",
         modal_title: "Ateliers en direct",
-        modal_sub: "Masterclasses en direct de 60 à 90 minutes. À partir de 27 $ US.",
-        modal_price: "Réservez votre place en envoyant le mot-clé en MP sur Instagram",
-        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Sous-titre", modal_th_key: "Mot-clé",
-        ws1_name: "Épargne Intelligente", ws1_date: "Sam 12 sept 2026 · 11h00 Montréal", ws1_sub: "Comment commencer à épargner même quand vous pensez que ça ne suffit pas", ws1_key: "Commentez ÉPARGNE",
-        ws2_name: "Choisissez-vous", ws2_date: "Sam 26 sept 2026", ws2_sub: "Comment construire l'identité dont vos objectifs ont besoin", ws2_key: "Commentez CHOISIS",
-        ws3_name: "Sortez de vos Dettes", ws3_date: "Sam 17 oct 2026", ws3_sub: "Un plan concret pour vous libérer de ce qui vous pèse", ws3_key: "Commentez DETTE",
-        ws4_name: "Créez des Objectifs et Suivez-les", ws4_date: "Sam 14 nov 2026", ws4_sub: "Comment transformer ce que vous voulez en un plan qui fonctionne", ws4_key: "Commentez OBJECTIF",
-        ws5_name: "Votre Budget 2027", ws5_date: "Sam 28 nov 2026", ws5_sub: "Créez votre plan financier pour l'année prochaine, pas à pas", ws5_key: "Commentez BUDGET",
-        ws6_name: "Votre Vision Board 2027", ws6_date: "Sam 5 déc 2026", ws6_sub: "Terminez l'année avec intention et dessinez votre 2027 avec un but", ws6_key: "Commentez VISION",
-        modal_note: "Tous les ateliers sont en direct, en espagnol et enregistrés.",
+        modal_sub: "Masterclasses en direct de 90 minutes. À partir de 27 $ US. Enregistrement inclus.",
+        modal_price: "Réservez votre place en achetant directement sur Hotmart",
+        modal_th_mc: "Masterclass", modal_th_date: "Date", modal_th_sub: "Sous-titre", modal_th_link: "Lien d'achat",
+        mc_buy: "Acheter sur Hotmart",
+          ws1_name: "Sortez de vos Dettes", ws1_date: "Mer 14 oct 2026 · 19h00 Montréal · 90 min", ws1_sub: "Un plan clair pour payer ce que vous devez et retrouver votre paix financière. Enregistrement inclus.",
+          ws2_name: "Votre Budget 2027", ws2_date: "Mer 18 nov 2026 · 19h00 Montréal · 90 min", ws2_sub: "Organisez votre argent et commencez l'année en sachant où va chaque dollar. Enregistrement inclus.",
+          ws3_name: "Créez vos Objectifs 2027", ws3_date: "Mer 25 nov 2026 · 19h00 Montréal · 90 min", ws3_sub: "Définissez ce que vous voulez accomplir et transformez-le en étapes que vous tiendrez. Enregistrement inclus.",
+          ws4_name: "Vision Board 2027", ws4_date: "Sam 5 déc 2026 · 11h00 Montréal · 90 min", ws4_sub: "Créez en direct le tableau qui vous rappelle chaque jour la vie que vous choisissez. Enregistrement inclus.",
+        modal_note: "Toutes les masterclasses sont en direct, en espagnol et l'enregistrement est inclus.",
         test_kicker: "Témoignages", test_title: "Des résultats <span class=\"deco\">réels</span>",
         test_sub: "Des histoires de personnes qui ont décidé de se réinventer et ont fait le premier pas.",
         test_a1: "Jose Luis Solano", test_r1: "Atelier Investissement pour Débutants",
