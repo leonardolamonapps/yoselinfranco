@@ -140,12 +140,11 @@
     }
     .lang-btn:hover { color: #fff; }
     .lang-btn.active { color: #fff; background: rgba(221,103,93,0.92); }
-    .nav-cta {
-      font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #fff; padding: 9px 16px; border-radius: 999px;
-      background: var(--accent); transition: background 0.25s, transform 0.25s; white-space: nowrap; line-height: 1;
-    }
-    .nav-cta:hover { background: #e58278; transform: translateY(-1px); }
+    /* CTA "Agenda tu sesión": el botón está COMENTADO en el HTML (aparece tras el
+       .menu-toggle, ver guía DESCRIPCION_LANDING §10). Si se restaura, usa las clases
+       .btn dark (mismo estilo/tamaño/proporción que "Ver fechas y comprar"). La clase
+       .nav-cta se conserva como gancho para ocultarlo en ≤700px (regla .nav-cta
+       { display:none } en el media query correspondiente). */
     .menu-toggle { display: none; background: none; border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 16px; border-radius: 999px; padding: 6px 12px; line-height: 1; }
 
     /* ===== HERO ===== */
@@ -260,7 +259,10 @@
     .numbered-section.light .h-item-num { color: var(--accent); }
 
     /* ===== SERVICES (dark cards) ===== */
-    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+    /* TEMPORAL: solo está visible la tarjeta "Programa Ordena tu Dinero" (las demás están
+       comentadas en el HTML). La grilla se fuerza a 1 columna para que ocupe todo el ancho.
+       Al reactivar las tarjetas, volver a: grid-template-columns: repeat(4, 1fr); */
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
     .service-card { background: #4A3728; padding: 32px 28px; display: flex; flex-direction: column; transition: background 0.25s; }
     .service-card:hover { background: #553f2e; }
     .service-card .badge {
@@ -276,7 +278,10 @@
     .service-card ul { list-style: none; margin-bottom: 24px; flex: 1; }
     .service-card ul li { position: relative; padding-left: 20px; font-size: 12.5px; color: rgba(255,255,255,0.6); margin-bottom: 8px; line-height: 1.5; }
     .service-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
-    .service-card .btn { margin-top: auto; text-align: center; }
+    /* CTA de las tarjetas de servicios: alineado a la izquierda y compacto (píldora del
+       ancho de su texto), para verse IGUAL que el "Ver fechas y comprar" de Talleres en
+       Vivo. Sin align-self el flex column de .service-card lo estiraba a todo el ancho. */
+    .service-card .btn { margin-top: auto; align-self: flex-start; text-align: center; }
     .service-card .btn.dark { background: var(--accent); border-color: var(--accent); color: #fff; }
     .service-card .btn.dark:hover { background: #e58278; }
     .service-card .btn.ghost { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
@@ -317,7 +322,10 @@
     @keyframes livePulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
 
     /* ===== COURSES (dark cards) ===== */
-    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
+    /* TEMPORAL: solo está visible la tarjeta "Talleres en Vivo" (las demás están comentadas
+       en el HTML). La grilla se fuerza a 1 columna para que ocupe todo el ancho.
+       Al reactivar las tarjetas, volver a: grid-template-columns: repeat(3, 1fr); */
+    .courses-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark); }
     .course-card { background: #4A3728; display: flex; flex-direction: column; height: 100%; transition: background 0.25s; }
     .course-card:hover { background: #553f2e; }
     .course-card .top { padding: 32px 28px 0; display: flex; flex-direction: column; flex: 1; }
@@ -459,7 +467,9 @@
 
     /* ===== Responsive ===== */
     @media (max-width: 1280px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      /* TEMPORAL: con una sola tarjeta visible se mantiene 1 columna.
+         Al reactivar las tarjetas, volver a: grid-template-columns: repeat(2, 1fr); */
+      .services-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 980px) {
       .intro-inner, .about-grid, .contact-grid, .quotes { grid-template-columns: 1fr; }
@@ -549,7 +559,11 @@
       </div>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
-    <a href="https://calendly.com/hola-yoselinfranco/new-meeting-1" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav_book">Agenda tu sesión</a>
+    <!-- CTA "Agenda tu sesión" ELIMINADO DE LA CABECERA — oculto temporalmente
+         (guía: DESCRIPCION_LANDING §10). Para restaurarlo, eliminar este comentario.
+         Se conserva la clase nav-cta y la regla .nav-cta { display:none } de ≤700px.
+    <a href="https://calendly.com/hola-yoselinfranco/new-meeting-1" target="_blank" rel="noopener" class="btn dark nav-cta" data-i18n="nav_book">Agenda tu sesión</a>
+    -->
   </nav>
 
   <!-- Hero -->
@@ -594,7 +608,7 @@
           Acompaño a personas en transición a reinventarse personal y financieramente — desde la experiencia real, no desde la teoría perfecta.
         </div>
         <div class="intro-cta-row reveal d2">
-          <a href="#contact" class="intro-cta solid" data-i18n="hero_cta1">Agenda tu sesión</a>
+          <a href="#contact" class="btn dark" data-i18n="hero_cta1">Agenda tu sesión</a>
           <a href="#about" class="intro-cta" data-i18n="hero_cta2">Conoce mi historia</a>
         </div>
         <div class="intro-stats reveal d3">
@@ -672,6 +686,10 @@
     </div>
     <div class="ns-body">
       <div class="services-grid reveal">
+        <!-- ================================================================
+             TARJETAS OCULTAS TEMPORALMENTE (guía: DESCRIPCION_LANDING §12)
+             Para reactivar una tarjeta, eliminar el comentario que la envuelve.
+             ================================================================
         <div class="service-card">
           <span class="badge" data-i18n="serv_badge_11">Mentoría 1:1</span>
           <h3 data-i18n="serv_t2">Mentoría Personal</h3>
@@ -711,10 +729,14 @@
           </ul>
           <a href="https://calendly.com/hola-yoselinfranco/paquete-3-sesiones-reinvencion" target="_blank" rel="noopener" class="btn dark" data-i18n="btn_book">Agenda tu sesión</a>
         </div>
+        ===== FIN TARJETAS OCULTAS ===== -->
         <div class="service-card">
           <span class="badge" data-i18n="serv_badge_pack">Paquete · 3 sesiones</span>
-          <h3 data-i18n="serv_t5">Paquete Financiero</h3>
+          <h3 data-i18n="serv_t5">Programa Ordena tu Dinero</h3>
+          <!-- Precio oculto temporalmente (guía: DESCRIPCION_LANDING §12).
+               Para mostrarlo de nuevo, eliminar este comentario:
           <div class="price">$220 <small>USD</small></div>
+          -->
           <p class="desc" data-i18n="serv_d5">3 sesiones de mentoría financiera para transformar tu relación con el dinero.</p>
           <ul>
             <li data-i18n="serv5_l1">3 sesiones de 60 min</li>
@@ -805,6 +827,11 @@
     </div>
     <div class="ns-body">
       <div class="courses-grid reveal">
+        <!-- ================================================================
+             TARJETAS OCULTAS TEMPORALMENTE (guía: DESCRIPCION_LANDING §12)
+             Solo está visible la tarjeta "Talleres en Vivo".
+             Para reactivar una tarjeta, eliminar el comentario que la envuelve.
+             ================================================================
         <div class="course-card">
           <div class="top">
             <span class="badge accent" data-i18n="c1_badge">Curso grabado</span>
@@ -890,6 +917,7 @@
             <a href="https://go.hotmart.com/H107827023X" target="_blank" rel="noopener" class="btn dark" data-i18n="combo_btn">Comprar</a>
           </div>
         </div>
+        ===== FIN TARJETAS OCULTAS ===== -->
         <div class="course-card">
           <div class="top">
             <span class="badge" data-i18n="c2_badge">En vivo</span>
@@ -1036,12 +1064,16 @@
           </tr>
         </thead>
         <tbody>
+          <!-- ===== FILA OCULTA TEMPORALMENTE (guía: DESCRIPCION_LANDING §10) =====
+               Taller "Saldar tus Deudas" (14 oct 2026, fecha ya transcurrida).
+               Para reactivarla, eliminar el comentario que la envuelve.
           <tr>
             <td class="ws-name" data-i18n="ws1_name">Saldar tus Deudas</td>
             <td class="ws-date-row" data-i18n="ws1_date">Mié 14 oct 2026 · 7:00 PM Montreal · 90 min</td>
             <td class="ws-sub" data-i18n="ws1_sub">Un plan claro para pagar lo que debes y recuperar tu paz financiera. Incluye la grabación.</td>
             <td class="ws-link"><a href="https://go.hotmart.com/F107823801K" target="_blank" rel="noopener" data-i18n="mc_buy">Comprar en Hotmart</a></td>
           </tr>
+          ===== FIN FILA OCULTA ===== -->
           <tr>
             <td class="ws-name" data-i18n="ws2_name">Tu Presupuesto 2027</td>
             <td class="ws-date-row" data-i18n="ws2_date">Mié 18 nov 2026 · 7:00 PM Montreal · 90 min</td>
@@ -1097,14 +1129,14 @@
         serv_t4: "Paquete Reinvención",
         serv_d4: "3 sesiones de mentoría personal para construir una transformación real y sostenida.",
         serv4_l1: "3 sesiones de 60 min", serv4_l2: "Plan de acción progresivo", serv4_l3: "Seguimiento entre sesiones", serv4_l4: "Materiales de trabajo incluidos",
-        serv_t5: "Paquete Financiero",
+        serv_t5: "Programa Ordena tu Dinero",
         serv_d5: "3 sesiones de mentoría financiera para transformar tu relación con el dinero.",
         serv5_l1: "3 sesiones de 60 min", serv5_l2: "Análisis completo de presupuesto", serv5_l3: "Plan financiero a 6 meses", serv5_l4: "Plantillas y guías incluidas",
         serv_t6: "¿No sabes por dónde empezar?",
         serv_d6: "Agenda tu sesión de exploración gratuita y juntas definimos el mejor camino para ti.",
         serv6_l1: "30 minutos vía Google Meet", serv6_l2: "Te ayudo a elegir el servicio ideal", serv6_l3: "Sin compromiso", serv6_l4: "Conversación cercana y honesta",
         btn_book: "Agenda tu sesión", btn_reserve: "Reservar mi cupo",
-        phase2: "<strong>Fase 2 — precios desde septiembre 2026:</strong> <span>Mentoría Personal: $100 USD</span> · <span>Mentoría Financiera: $120 USD</span> · <span>Paquete Reinvención: $270 USD</span> · <span>Paquete Financiero: $320 USD</span>",
+        phase2: "<strong>Fase 2 — precios desde septiembre 2026:</strong> <span>Mentoría Personal: $100 USD</span> · <span>Mentoría Financiera: $120 USD</span> · <span>Paquete Reinvención: $270 USD</span> · <span>Programa Ordena tu Dinero: $320 USD</span>",
         free_note: "<strong>Importante:</strong> Todos los servicios son 100% online, en español e inglés, disponibles donde quiera que estés.",
         about_kicker: "Quién Soy", about_title: "Mi historia es <span class=\"deco\">mi método</span>",
         about_p1: "Soy <strong>Yoselin Franco</strong>. Venezolana. Contadora Pública egresada de la UCAB. Más de 10 años de experiencia en finanzas, incluyendo el Gobierno de Canadá. Vivo en Montreal en una relación multicultural con un canadiense de Quebec que me enseñó que el tiempo libre existe — y yo le enseñé a comer arepas.",
@@ -1217,14 +1249,14 @@
         serv_t4: "Reinvention Package",
         serv_d4: "3 personal mentorship sessions to build a real, sustained transformation.",
         serv4_l1: "3 x 60-min sessions", serv4_l2: "Progressive action plan", serv4_l3: "Follow-up between sessions", serv4_l4: "Work materials included",
-        serv_t5: "Financial Package",
+        serv_t5: "Programa Ordena tu Dinero",
         serv_d5: "3 financial mentorship sessions to transform your relationship with money.",
         serv5_l1: "3 x 60-min sessions", serv5_l2: "Full budget analysis", serv5_l3: "6-month financial plan", serv5_l4: "Templates and guides included",
         serv_t6: "Don't know where to start?",
         serv_d6: "Book your free discovery session and together we'll find the best path for you.",
         serv6_l1: "30 minutes via Google Meet", serv6_l2: "I'll help you choose the right service", serv6_l3: "No commitment", serv6_l4: "Warm and honest conversation",
         btn_book: "Book your session", btn_reserve: "Reserve my slot",
-        phase2: "<strong>Phase 2 — prices from September 2026:</strong> <span>Personal Mentorship: $100 USD</span> · <span>Financial Mentorship: $120 USD</span> · <span>Reinvention Package: $270 USD</span> · <span>Financial Package: $320 USD</span>",
+        phase2: "<strong>Phase 2 — prices from September 2026:</strong> <span>Personal Mentorship: $100 USD</span> · <span>Financial Mentorship: $120 USD</span> · <span>Reinvention Package: $270 USD</span> · <span>Programa Ordena tu Dinero: $320 USD</span>",
         free_note: "<strong>Important:</strong> All services are 100% online, in Spanish and English, available wherever you are.",
         about_kicker: "About Me", about_title: "My story is <span class=\"deco\">my method</span>",
         about_p1: "I am <strong>Yoselin Franco</strong>. Venezuelan. Public Accountant graduated from UCAB. Over 10 years of finance experience, including the Government of Canada. I live in Montreal in a multicultural relationship with a Québécois who taught me that free time exists — and I taught him to eat arepas.",
@@ -1337,14 +1369,14 @@
         serv_t4: "Forfait Réinvention",
         serv_d4: "3 séances de mentorat personnel pour une transformation réelle et durable.",
         serv4_l1: "3 séances de 60 min", serv4_l2: "Plan d'action progressif", serv4_l3: "Suivi entre les séances", serv4_l4: "Matériel de travail inclus",
-        serv_t5: "Forfait Financier",
+        serv_t5: "Programa Ordena tu Dinero",
         serv_d5: "3 séances de mentorat financier pour transformer votre rapport à l'argent.",
         serv5_l1: "3 séances de 60 min", serv5_l2: "Analyse complète du budget", serv5_l3: "Plan financier sur 6 mois", serv5_l4: "Modèles et guides inclus",
         serv_t6: "Vous ne savez pas par où commencer ?",
         serv_d6: "Réservez votre séance de découverte gratuite et nous trouverons ensemble le meilleur chemin pour vous.",
         serv6_l1: "30 minutes via Google Meet", serv6_l2: "Je vous aide à choisir le bon service", serv6_l3: "Sans engagement", serv6_l4: "Conversation chaleureuse et honnête",
         btn_book: "Réservez votre séance", btn_reserve: "Réserver ma place",
-        phase2: "<strong>Phase 2 — prix à partir de septembre 2026 :</strong> <span>Mentorat personnel : 100 $ USD</span> · <span>Mentorat financier : 120 $ USD</span> · <span>Forfait Réinvention : 270 $ USD</span> · <span>Forfait Financier : 320 $ USD</span>",
+        phase2: "<strong>Phase 2 — prix à partir de septembre 2026 :</strong> <span>Mentorat personnel : 100 $ USD</span> · <span>Mentorat financier : 120 $ USD</span> · <span>Forfait Réinvention : 270 $ USD</span> · <span>Programa Ordena tu Dinero : 320 $ USD</span>",
         free_note: "<strong>Important :</strong> Tous les services sont 100% en ligne, en espagnol et en anglais, disponibles où que vous soyez.",
         about_kicker: "À propos", about_title: "Mon histoire est <span class=\"deco\">ma méthode</span>",
         about_p1: "Je suis <strong>Yoselin Franco</strong>. Vénézuélienne. Comptable publique diplômée de l'UCAB. Plus de 10 ans d'expérience en finance, y compris au gouvernement du Canada. Je vis à Montréal dans une relation multiculturelle avec un Québécois qui m'a appris que le temps libre existe — et moi, je lui ai appris à manger des arepas.",
